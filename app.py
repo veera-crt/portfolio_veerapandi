@@ -2,7 +2,7 @@ import random
 import time
 import os
 from dotenv import load_dotenv
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import smtplib
 from email.mime.text import MIMEText
@@ -11,7 +11,7 @@ from email.mime.multipart import MIMEMultipart
 # Load environment variables
 load_dotenv()
 
-app = Flask(__name__, static_folder='.', static_url_path='')
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 CORS(app)  # Enable CORS for all routes
 
 # Store OTPs in memory: {email: (otp, expiry_time)}
@@ -27,7 +27,19 @@ RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL", "")
 
 @app.route('/', methods=['GET'])
 def home():
-    return app.send_static_file('index.html')
+    return render_template('index.html')
+
+@app.after_request
+def add_header(response):
+    """
+    Add headers to both force latest IE rendering engine or lately Chrome,
+    and also to cache the rendered page for 10 minutes.
+    """
+    response.headers['X-UA-Compatible'] = 'IE=Edge,chrome=1'
+    # Set Cache-Control for static files
+    if request.path.startswith('/static/'):
+        response.headers['Cache-Control'] = 'public, max-age=604800'  # 1 week
+    return response
 
 @app.route('/send-otp', methods=['POST'])
 def send_otp():
