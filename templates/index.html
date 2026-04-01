@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Veerapandi G | Cybersecurity Engineer</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="static/image/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/image/favicon-16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/image/favicon-180.png">
     <meta name="description"
         content="Cybersecurity specialist with expertise in cloud defense, ISO 27001 GRC, and secure software architecture.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +15,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="static/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 </head>
@@ -28,7 +31,7 @@
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="#hero" style="display: block; text-decoration: none; cursor: pointer;">
-                    <img src="{{ url_for('static', filename='image/vlog.png') }}" alt="VG Logo"
+                    <img src="static/image/vlog.png" alt="VG Logo"
                         style="height: 50px; width: auto; display: block; mix-blend-mode: screen; filter: brightness(1.2);">
                 </a>
             </div>
@@ -58,12 +61,15 @@
                     <p class="hero-description">Aspiring Cybersecurity Professional | Building Secure Digital Solutions
                     </p>
                     <div class="hero-actions mt-8">
-                        <a href="#experience" class="btn-decode">Decode Me <i class="fas fa-bolt-lightning"></i></a>
+                        <div class="hero-btns" style="display: flex; gap: 16px; align-items: center;">
+                            <a href="#experience" class="btn-decode">Decode Me <i class="fas fa-bolt-lightning"></i></a>
+                            <a href="https://drive.google.com/drive/folders/1gEMjSP0kds1QnGUNKBIuA34U1eA7x5cz?usp=sharing" target="_blank" class="btn-resume">Download Resume <i class="fas fa-download"></i></a>
+                        </div>
                     </div>
                 </div>
                 <div class="hero-image-container">
                     <div class="hero-image-frame">
-                        <img src="{{ url_for('static', filename='image/n.png') }}" alt="Veerapandi G" class="hero-profile-img">
+                        <img src="static/image/n.png" alt="Veerapandi G" class="hero-profile-img">
                     </div>
                 </div>
             </div>
@@ -85,7 +91,7 @@
                         <!-- Entry 0: Unisys -->
                         <div class="exp-entry" data-index="0">
                             <div class="exp-icon-wrap">
-                                <img src="{{ url_for('static', filename='image/unisys_logo.png') }}" alt="Unisys">
+                                <img src="static/image/unisys_logo.png" alt="Unisys">
                             </div>
                             <h3 class="exp-title">UNISYS INNOVATIVE PROGRAM</h3>
                             <p class="exp-description">
@@ -100,7 +106,7 @@
                         <!-- Entry 1: Ethical Hacking -->
                         <div class="exp-entry" data-index="1">
                             <div class="exp-icon-wrap">
-                                <img src="{{ url_for('static', filename='image/eduskills_logo.png') }}" alt="EduSkills" style="width: 100%; height: auto;">
+                                <img src="static/image/eduskills_logo.png" alt="EduSkills" style="width: 100%; height: auto;">
                             </div>
                             <h3 class="exp-title">ETHICAL HACKING INTERN – EDUSKILLS</h3>
                             <p class="exp-description">
@@ -130,7 +136,7 @@
                         <!-- Entry 3: Media Lead -->
                         <div class="exp-entry" data-index="3">
                             <div class="exp-icon-wrap">
-                                <img src="{{ url_for('static', filename='image/srm_logo.png') }}" alt="SRM University" style="width: 100%; height: auto;">
+                                <img src="static/image/srm_logo.png" alt="SRM University" style="width: 100%; height: auto;">
                             </div>
                             <h3 class="exp-title">MEDIA LEAD – IE(I) NWC STUDENT CHAPTER</h3>
                             <p class="exp-description">
@@ -144,7 +150,7 @@
                         <!-- Entry 4: Email Forensics -->
                         <div class="exp-entry" data-index="4">
                             <div class="exp-icon-wrap">
-                                <img src="{{ url_for('static', filename='image/srm_logo.png') }}" alt="SRM University" style="width: 100%; height: auto;">
+                                <img src="static/image/srm_logo.png" alt="SRM University" style="width: 100%; height: auto;">
                             </div>
                             <h3 class="exp-title">EMAIL FORENSICS & PHISHING INTERN</h3>
                             <p class="exp-description">
@@ -158,7 +164,7 @@
                         <!-- Entry 5: Technical Team -->
                         <div class="exp-entry" data-index="5">
                             <div class="exp-icon-wrap">
-                                <img src="{{ url_for('static', filename='image/srm_logo.png') }}" alt="SRM University" style="width: 100%; height: auto;">
+                                <img src="static/image/srm_logo.png" alt="SRM University" style="width: 100%; height: auto;">
                             </div>
                             <h3 class="exp-title">TECHNICAL TEAM MEMBER – NWC ASSOCIATION</h3>
                             <p class="exp-description">
@@ -172,7 +178,7 @@
                         <!-- Entry 6: Security Analyst -->
                         <div class="exp-entry" data-index="6">
                             <div class="exp-icon-wrap">
-                                <img src="{{ url_for('static', filename='image/eduskills_logo.png') }}" alt="EduSkills" style="width: 100%; height: auto;">
+                                <img src="static/image/eduskills_logo.png" alt="EduSkills" style="width: 100%; height: auto;">
                             </div>
                             <h3 class="exp-title">CYBER SECURITY ANALYST INTERN – EDUSKILLS</h3>
                             <p class="exp-description">
@@ -188,18 +194,18 @@
                     <!-- Right: Sticky Visuals -->
                     <div class="exp-visual-sticky">
                         <div class="exp-photo-stack">
-                            <div class="exp-photo active" style="background-image: url(&quot;{{ url_for('static', filename='image/unisys copy.png') }}&quot;);">
+                            <div class="exp-photo active" style="background-image: url('static/image/unisys\ copy.png');">
                             </div>
-                            <div class="exp-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/ethical_hacking_avatar.png') }}&quot;);">
+                            <div class="exp-photo" style="background-image: url('static/image/ethical_hacking_avatar.png');">
                             </div>
-                            <div class="exp-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/youtube_creator_avatar.png') }}&quot;);">
+                            <div class="exp-photo" style="background-image: url('static/image/youtube_creator_avatar.png');">
                             </div>
-                            <div class="exp-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/media_lead_avatar.png') }}&quot;);"></div>
-                            <div class="exp-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/email_forensics_avatar.png') }}&quot;);">
+                            <div class="exp-photo" style="background-image: url('static/image/media_lead_avatar.png');"></div>
+                            <div class="exp-photo" style="background-image: url('static/image/email_forensics_avatar.png');">
                             </div>
-                            <div class="exp-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/technical_team_avatar.png') }}&quot;);">
+                            <div class="exp-photo" style="background-image: url('static/image/technical_team_avatar.png');">
                             </div>
-                            <div class="exp-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/security_analyst_avatar.png') }}&quot;);">
+                            <div class="exp-photo" style="background-image: url('static/image/security_analyst_avatar.png');">
                             </div>
                         </div>
                     </div>
@@ -219,20 +225,20 @@
                 <div class="certs-grid">
                     <!-- Certificate 1: Fortinet Fundamentals -->
                     <div class="cert-card reveal">
-                        <img src="{{ url_for('static', filename='image/cert_fortinet_fundamentals.png') }}" alt="Fortinet Fundamentals"
+                        <img src="static/image/cert_fortinet_fundamentals.png" alt="Fortinet Fundamentals"
                             class="cert-full-img"
                             onerror="this.outerHTML='<i class=\'fas fa-shield-halved\' style=\'font-size: 40px; color: #ef4444;\'></i>'">
                     </div>
 
                     <!-- Certificate 2: Fortinet Associate -->
                     <div class="cert-card reveal">
-                        <img src="{{ url_for('static', filename='image/cert_fortinet_associate.png') }}" alt="Fortinet Associate" class="cert-full-img"
+                        <img src="static/image/cert_fortinet_associate.png" alt="Fortinet Associate" class="cert-full-img"
                             onerror="this.outerHTML='<i class=\'fas fa-user-shield\' style=\'font-size: 40px; color: #ef4444;\'></i>'">
                     </div>
 
                     <!-- Certificate 2: Fortinet Associate -->
                     <div class="cert-card reveal">
-                        <img src="{{ url_for('static', filename='image/image.png') }}" alt="Network Basics" class="cert-full-img"
+                        <img src="static/image/image.png" alt="Network Basics" class="cert-full-img"
                             onerror="this.outerHTML='<i class=\'fas fa-user-shield\' style=\'font-size: 40px; color: #ef4444;\'></i>'">
                     </div>
                 </div>
@@ -245,16 +251,24 @@
             <div class="container">
                 <h2 class="exp-main-title reveal" style="text-align: center; margin-bottom: 60px;">FEATURED PROJECTS</h2>
                 
-                <div class="work-grid" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+                <div class="work-grid">
                     <!-- Project 1: CipherKeep -->
                     <div class="work-card reveal">
                         <div class="work-left">
                             <div class="work-visual">
                                 <div class="work-slideshow">
-                                    <img src="{{ url_for('static', filename='image/cipherkeep_1.png') }}" alt="CipherKeep Dashboard" class="slide active">
-                                    <img src="{{ url_for('static', filename='image/cipherkeep_2.png') }}" alt="CipherKeep Password Vault" class="slide">
-                                    <img src="{{ url_for('static', filename='image/cipherkeep_3.png') }}" alt="CipherKeep Security Overview" class="slide">
+                                    <img src="static/image/cipherkeep_1.png" alt="CipherKeep Dashboard" class="slide active">
+                                    <img src="static/image/cipherkeep_2.png" alt="CipherKeep Password Vault" class="slide">
+                                    <img src="static/image/cipherkeep_3.png" alt="CipherKeep Security Overview" class="slide">
                                 </div>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">CipherKeep – Secure Password Manager</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
                             </div>
                             <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
                                 <i class="devicon-python-plain colored" title="Python"></i>
@@ -263,32 +277,141 @@
                                 <i class="devicon-javascript-plain colored" title="JavaScript"></i>
                                 <i class="fas fa-cloud" style="color: #ffffff; font-size: 22px;" title="Cloud DB"></i>
                             </div>
-                        </div>
-                        <div class="work-right">
-                            <div class="work-header">
-                                <h3 class="work-title">CipherKeep – Secure Password Manager</h3>
-                                <button class="expand-btn" aria-label="Expand details"><i class="fas fa-chevron-down"></i></button>
-                            </div>
                             <div class="work-details">
                                 <div class="work-details-inner">
                                     <p class="work-desc">Developed CipherKeep as a hands-on project during my Network Security coursework, focusing on building a secure platform to store and manage confidential passwords. The application implements session management with time-based access control, ensuring enhanced security for user data. I have been actively using and maintaining the system for the past six months, regularly updating API keys and improving security configurations. This project strengthened my practical understanding of authentication, data protection, and secure application design principles.</p>
                                     <div class="work-links-inline">
-                                        <a href="https://chipherkeep.vercel.app/" target="_blank" class="work-link-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                        <a href="https://chipherkeep.vercel.app/" target="_blank" class="work-link-btn" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 2: Crop & Carry -->
+                    <!-- Project 2: Secure Voting Platform -->
                     <div class="work-card reveal">
                         <div class="work-left">
                             <div class="work-visual">
                                 <div class="work-slideshow">
-                                    <img src="{{ url_for('static', filename='image/crop_carry_1.png') }}" alt="Crop & Carry Dashboard" class="slide active">
-                                    <img src="{{ url_for('static', filename='image/crop_carry_2.png') }}" alt="Crop & Carry Marketplace" class="slide">
-                                    <img src="{{ url_for('static', filename='image/crop_carry_3.png') }}" alt="Crop & Carry Marketplace Details" class="slide">
+                                    <img src="static/image/securevote_pro_mockup_1769443333858.png" alt="Secure Voting Dashboard" class="slide active">
+                                    <img src="static/image/securevote_preview.png" alt="Voting Interface" class="slide">
                                 </div>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">Secure Voting Platform</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="devicon-flask-original" style="color: #ffffff;" title="Flask"></i>
+                                <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+                                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                                <i class="fas fa-lock" style="color: #fbbf24; font-size: 22px;" title="AES-256 Encryption"></i>
+                            </div>
+                            <div class="work-details">
+                                <div class="work-details-inner">
+                                    <p class="work-desc">Developed a highly secure and transparent full-stack web-based voting platform that enables users to cast votes for their nominees in a controlled and tamper-resistant environment. Implemented robust user authentication and authorization mechanisms to prevent unauthorized access, along with strict validation to ensure that each user can vote only once. The platform uses <strong>AES-256 encryption</strong> to securely store sensitive data, protecting user identities and voting records from potential breaches. Secure session handling and backend validation are enforced to prevent common web vulnerabilities such as SQL injection, cross-site scripting (XSS), and unauthorized request manipulation. All vote transactions are handled through secure APIs, ensuring data integrity and transparency.</p>
+                                    <div class="work-links-inline">
+                                        <a href="https://secure-vote-nine.vercel.app/" target="_blank" class="work-link-btn" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: Email Forensics Analyzer -->
+                    <div class="work-card reveal">
+                        <div class="work-left">
+                            <div class="work-visual">
+                                <div class="work-slideshow">
+                                    <img src="static/image/phishing_analyzer_1.png" alt="Phishing Email Analyzer Landing Page" class="slide active">
+                                    <img src="static/image/phishing_analyzer_2.png" alt="Email File Upload Interface" class="slide">
+                                    <img src="static/image/phishing_analyzer_3.png" alt="Phishing Score and Analysis Results" class="slide">
+                                    <img src="static/image/phishing_analyzer_4.png" alt="Detailed Suspicious URL Detection" class="slide">
+                                    <img src="static/image/phishing_analyzer_5.png" alt="Header and Content Forensics" class="slide">
+                                </div>
+                            </div>
+                            <div class="internship-badge">
+                                <i class="fas fa-certificate"></i>
+                                <span>Internship project outcome</span>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">Email Forensics Analyzer – Phishing Detection System</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="devicon-flask-original" style="color: #ffffff;" title="Flask"></i>
+                                <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+                                <i class="fas fa-shield-virus" style="color: #ef4444; font-size: 22px;" title="Phishing Detection"></i>
+                                <i class="fas fa-satellite-dish" style="color: #06b6d4; font-size: 22px;" title="VirusTotal API"></i>
+                            </div>
+                            <div class="work-details">
+                                <div class="work-details-inner">
+                                    <p class="work-desc">Developed an "Email Forensics Analyzer" as a comprehensive web-based platform designed to detect phishing attempts and analyze suspicious emails for potential security threats. The system performs advanced analysis by examining email content, complex headers, links, and attachments to identify malicious indicators. By integrating with external threat intelligence services like "VirusTotal", the application enables real-time scanning of files and URLs to detect known malware and sophisticated phishing redirections. The platform also decodes and analyzes email headers to trace sender paths, identify spoofing attempts, and detect routing anomalies. This project emphasizes secure data handling, safe API usage, and robust protection against malicious inputs, assisting users in preventing data breaches and improving overall email security awareness.</p>
+                                    <div class="work-links-inline">
+                                        <a href="https://email-phishing-detector-4qf2.vercel.app/" target="_blank" class="work-link-btn" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: IPS Implementation -->
+                    <div class="work-card reveal">
+                        <div class="work-left">
+                            <div class="work-visual">
+                                <div class="work-slideshow">
+                                    <img src="static/image/ips_1.png" alt="Packet Tracer Network Topology" class="slide active">
+                                    <img src="static/image/ips_2.png" alt="Cisco CLI Configuration" class="slide">
+                                    <img src="static/image/ips_3.png" alt="Network Simulation Verification" class="slide">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">Intrusion Prevention System (IPS) Case Study</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="fas fa-network-wired" style="color: #ffffff; font-size: 22px;" title="Cisco Packet Tracer"></i>
+                                <span style="font-size: 14px; color: #fff; font-weight: 500; font-family: var(--font-sans); letter-spacing: 0.5px;">Cisco Packet Tracer</span>
+                            </div>
+                            <div class="work-details">
+                                <div class="work-details-inner">
+                                    <p class="work-desc">Completed an in-depth case study on the design and implementation of an Intrusion Prevention System (IPS) during my Computer Networks coursework, focusing on translating theoretical security concepts into a practical, hands-on environment using Cisco Packet Tracer. The project involved building a multi-router network infrastructure with dynamic routing and enabling advanced security features within Cisco IOS. I configured and fine-tuned IPS signatures to ensure effective threat detection and applied security policies across network interfaces, validating their performance through controlled attack simulations. Additionally, a centralized syslog server was implemented to enable real-time monitoring and alerting of security events. This project significantly enhanced my understanding of proactive network defense mechanisms and strengthened my knowledge of network security architecture and intrusion prevention strategies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Crop & Carry -->
+                    <div class="work-card reveal">
+                        <div class="work-left">
+                            <div class="work-visual">
+                                <div class="work-slideshow">
+                                    <img src="static/image/crop_carry_1.png" alt="Crop & Carry Dashboard" class="slide active">
+                                    <img src="static/image/crop_carry_2.png" alt="Crop & Carry Marketplace" class="slide">
+                                    <img src="static/image/crop_carry_3.png" alt="Crop & Carry Marketplace Details" class="slide">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">Crop & Carry – Marketplace Platform</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
                             </div>
                             <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
                                 <i class="devicon-python-plain colored" title="Python"></i>
@@ -298,46 +421,226 @@
                                 <i class="devicon-javascript-plain colored" title="JavaScript"></i>
                                 <i class="fas fa-cloud" style="color: #ffffff; font-size: 22px;" title="Cloud DB"></i>
                             </div>
-                        </div>
-                        <div class="work-right">
-                            <div class="work-header">
-                                <h3 class="work-title">Crop & Carry – Marketplace Platform</h3>
-                                <button class="expand-btn" aria-label="Expand details"><i class="fas fa-chevron-down"></i></button>
-                            </div>
                             <div class="work-details">
                                 <div class="work-details-inner">
                                     <p class="work-desc">Developed Crop & Carry as a full-stack web application during my DBMS coursework, aimed at directly connecting farmers and consumers while eliminating intermediaries and promoting organic product sales. The platform allows farmers to list and manage their agricultural products, while consumers can browse and purchase items based on their needs. Once an order is placed, it is made available to delivery partners, who can accept or reject delivery requests. Upon acceptance, the order is assigned to the respective delivery partner, with a dedicated dashboard to track and update delivery progress, including pickup and final delivery status. After successful delivery, consumers receive email and dashboard notifications to rate both the product and delivery service. The system also provides performance insights by displaying average ratings for farmers and delivery partners on their respective dashboards, ensuring transparency and trust across the platform.</p>
                                     <div class="work-links-inline">
-                                        <a href="https://cropandcarry.vercel.app/" target="_blank" class="work-link-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                                        <a href="https://cropandcarry.vercel.app/" target="_blank" class="work-link-btn" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Project 3: IPS Implementation -->
+                    <!-- Project 6: VG Messenger -->
                     <div class="work-card reveal">
                         <div class="work-left">
                             <div class="work-visual">
                                 <div class="work-slideshow">
-                                    <img src="{{ url_for('static', filename='image/ips_1.png') }}" alt="Packet Tracer Network Topology" class="slide active">
-                                    <img src="{{ url_for('static', filename='image/ips_2.png') }}" alt="Cisco CLI Configuration" class="slide">
-                                    <img src="{{ url_for('static', filename='image/ips_3.png') }}" alt="Network Simulation Verification" class="slide">
+                                    <img src="static/image/vg_messenger_1.png" alt="VG Messenger Connect Interface" class="slide active">
+                                    <img src="static/image/vg_messenger_2.png" alt="Chat Groups Selection" class="slide">
+                                    <img src="static/image/vg_messenger_3.png" alt="Real-time Engineering Group Chat" class="slide">
+                                    <img src="static/image/vg_messenger_4.png" alt="Create New Chat Group" class="slide">
+                                    <img src="static/image/vg_messenger_5.png" alt="Group Creation with Group Name" class="slide">
                                 </div>
-                            </div>
-                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
-                                <i class="fas fa-network-wired" style="color: #ffffff; font-size: 22px;" title="Cisco Packet Tracer"></i>
-                                <span style="font-size: 14px; color: #fff; font-weight: 500; font-family: var(--font-sans); letter-spacing: 0.5px;">Cisco Packet Tracer</span>
                             </div>
                         </div>
                         <div class="work-right">
                             <div class="work-header">
-                                <h3 class="work-title">Intrusion Prevention System (IPS) Case Study</h3>
-                                <button class="expand-btn" aria-label="Expand details"><i class="fas fa-chevron-down"></i></button>
+                                <h3 class="work-title">VG Messenger – Real-Time Chat Application</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="devicon-html5-plain colored" title="HTML5"></i>
+                                <i class="devicon-css3-plain colored" title="CSS3"></i>
+                                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                                <i class="devicon-nodejs-plain colored" title="Node.js"></i>
+                                <i class="devicon-express-original" style="color: #ffffff;" title="Express.js"></i>
+                                <i class="fas fa-plug" style="color: #3b82f6; font-size: 22px;" title="Socket.io"></i>
                             </div>
                             <div class="work-details">
                                 <div class="work-details-inner">
-                                    <p class="work-desc">Completed an in-depth case study on the design and implementation of an Intrusion Prevention System (IPS) during my Computer Networks coursework, focusing on translating theoretical security concepts into a practical, hands-on environment using Cisco Packet Tracer. The project involved building a multi-router network infrastructure with dynamic routing and enabling advanced security features within Cisco IOS. I configured and fine-tuned IPS signatures to ensure effective threat detection and applied security policies across network interfaces, validating their performance through controlled attack simulations. Additionally, a centralized syslog server was implemented to enable real-time monitoring and alerting of security events. This project significantly enhanced my understanding of proactive network defense mechanisms and strengthened my knowledge of network security architecture and intrusion prevention strategies.</p>
+                                    <p class="work-desc">Developed "VG Messenger" as a high-performance, real-time web-based chat application designed for instant, bidirectional communication with minimal latency. Leveraging "Socket.io" and an event-driven architecture, the platform enables seamless message synchronization across concurrent users without page refreshes. The application features a scalable Node.js/Express backend and a responsive frontend, focusing on robust performance and efficient message delivery. This project demonstrates expertise in WebSocket-based communication, asynchronous programming, and building interactive, live user experiences.</p>
+                                    <div class="work-links-inline">
+                                        <a href="https://vg-co-messager.vercel.app/" target="_blank" class="work-link-btn" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: MediCare AI -->
+                    <div class="work-card reveal">
+                        <div class="work-left">
+                            <div class="work-visual">
+                                <div class="work-slideshow">
+                                    <img src="static/image/medicare_1.png" alt="MediCare AI Interface" class="slide active">
+                                    <img src="static/image/medicare_2.png" alt="Symptom Analysis Interaction" class="slide">
+                                    <img src="static/image/medicare_3.png" alt="Medical Guidance Response" class="slide">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">MediCare AI – Intelligent Health Assistance</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="devicon-flask-original" style="color: #ffffff;" title="Flask"></i>
+                                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                                <i class="fas fa-brain" style="color: #3b82f6; font-size: 22px;" title="AI/ML"></i>
+                                <i class="fas fa-database" style="color: #10b981; font-size: 22px;" title="Medical Dataset"></i>
+                            </div>
+                            <div class="work-details">
+                                <div class="work-details-inner">
+                                    <p class="work-desc">Developed MediCare AI as an intelligent web-based healthcare assistance platform designed to provide basic medical guidance based on user symptom input. The system is powered by a medical dataset used to train the system logic for identifying symptom patterns and generating relevant suggestions, including possible conditions, precautions, and medication guidance. The platform features a simple, responsive interface focused on helping users make informed decisions before consulting healthcare professionals. From a security perspective, it implements secure input validation and protected backend communication to ensure safe handling of user information.</p>
+                                    <div class="work-links-inline">
+                                        <a href="https://veera-crt.github.io/AI-MEDICARE-CHATBOT/" target="_blank" class="work-link-btn" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Face Recognition Attendance System -->
+                    <div class="work-card reveal">
+                        <div class="work-left">
+                            <div class="work-visual">
+                                <div class="work-slideshow">
+                                    <img src="static/image/face_recognition_mockup.png" alt="Face Recognition Attendance Dashboard" class="slide active">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">Face Recognition Attendance System</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="fas fa-camera" style="color: #3b82f6; font-size: 22px;" title="OpenCV"></i>
+                                <i class="fas fa-user-check" style="color: #10b981; font-size: 22px;" title="Face Recognition"></i>
+                                <i class="fas fa-database" style="color: #6366f1; font-size: 22px;" title="Local DB"></i>
+                                <i class="fas fa-file-pdf" style="color: #ef4444; font-size: 22px;" title="PDF Generation"></i>
+                            </div>
+                            <div class="work-details">
+                                <div class="work-details-inner">
+                                    <p class="work-desc">Developed an automated "Face Recognition Attendance System" using Python and OpenCV, designed to capture and track attendance through real-time facial detection. The system features a registration module that captures facial and retinal landmarks to train a custom recognition model. During operation, it identifies registered individuals using a live webcam feed and automatically logs their presence in a local database with precision timestamps. The platform also includes a one-click reporting feature that exports historical attendance records into professional PDF documents. This project demonstrates proficiency in computer vision integration, dataset handling, and robust local system deployment.</p>
+                                    <div class="work-links-inline">
+                                        <a href="https://youtu.be/1RpE_ap6kME" target="_blank" class="work-link-btn" title="Watch Demo Video"><i class="fab fa-youtube"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 9: Clara Olive C.S.I. Polio Home -->
+                    <div class="work-card reveal">
+                        <div class="work-left">
+                            <div class="work-visual">
+                                <div class="work-slideshow">
+                                    <img src="static/image/clara_olive_mockup.png" alt="Clara Olive CSI Polio Home Landing Page" class="slide active">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">Clara Olive C.S.I. Polio Home – Web Development</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="devicon-html5-plain colored" title="HTML5"></i>
+                                <i class="devicon-css3-plain colored" title="CSS3"></i>
+                                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                                <i class="fas fa-hand-holding-heart" style="color: #ef4444; font-size: 22px;" title="Volunteering"></i>
+                                <i class="fas fa-wheelchair" style="color: #3b82f6; font-size: 22px;" title="Accessibility"></i>
+                            </div>
+                            <div class="work-details">
+                                <div class="work-details-inner">
+                                    <p class="work-desc">Contributed as a volunteer web developer by designing and developing a responsive website for an organization supporting differently-abled students. The platform presents key details about the organization’s mission, services, educational support, and facilities in a clear and structured manner. It also includes sections for admissions information, activities, and a gallery to improve engagement and awareness. This project emphasizes clean, user-friendly interface design with a focus on real-world usability and accessibility, helping the organization connect with a wider audience and highlight opportunities for community volunteering and contributions.</p>
+                                    <div class="work-links-inline">
+                                        <a href="https://claraolivehome.sbs/index.html" target="_blank" class="work-link-btn" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 10: Tic Tac Toe AI -->
+                    <div class="work-card reveal">
+                        <div class="work-left">
+                            <div class="work-visual">
+                                <div class="work-slideshow">
+                                    <img src="static/image/tictactoe_mockup.png" alt="Tic Tac Toe AI Interface" class="slide active">
+                                </div>
+                            </div>
+                            <div class="deployment-status">
+                                <i class="fas fa-cog fa-spin"></i>
+                                <span>Deploying nearby...</span>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">Tic Tac Toe – Quantum AI & Multiplayer</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="devicon-flask-original" style="color: #ffffff;" title="Flask"></i>
+                                <i class="fas fa-robot" style="color: #3b82f6; font-size: 22px;" title="Minimax AI"></i>
+                                <i class="fas fa-plug" style="color: #6366f1; font-size: 22px;" title="Socket.io"></i>
+                                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                            </div>
+                            <div class="work-details">
+                                <div class="work-details-inner">
+                                    <p class="work-desc">Developed a high-performance Tic Tac Toe platform featuring two distinct modes: "VS AI" and "Play with Friends". The AI is powered by the "Minimax algorithm", ensuring an unbeatable opponent by recursively evaluating all possible game outcomes. The multiplayer mode utilizes "Socket.io" for real-time, bidirectional communication, allowing players to join private rooms via unique "Room IDs". This project demonstrates expertise in real-time synchronization, game theory implementation, and building interactive web experiences with low-latency responsiveness.</p>
+                                    <div class="work-links-inline">
+                                        <a href="/tictactoe" class="work-link-btn" title="Play Now"><i class="fas fa-play"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 11: JARVIS AI Assistant -->
+                    <div class="work-card reveal">
+                        <div class="work-left">
+                            <div class="work-visual">
+                                <div class="work-slideshow">
+                                    <img src="static/image/jarvis_mockup.png" alt="JARVIS AI Assistant Interface" class="slide active">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="work-right">
+                            <div class="work-header">
+                                <h3 class="work-title">JARVIS AI Assistant – Voice-Based Intelligent Automation</h3>
+                                <button class="expand-btn" aria-label="Toggle details">
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="work-tags" style="font-size: 28px; gap: 16px; display: flex; align-items: center; justify-content: flex-start; margin-bottom: 20px;">
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="fas fa-brain" style="color: #3b82f6; font-size: 22px;" title="Google Gemini AI"></i>
+                                <i class="fas fa-microphone" style="color: #10b981; font-size: 22px;" title="Voice Recognition"></i>
+                                <i class="fab fa-youtube" style="color: #ff0000; font-size: 22px;" title="YouTube Automation"></i>
+                                <i class="fas fa-satellite-dish" style="color: #06b6d4; font-size: 22px;" title="LiveKit Interaction"></i>
+                                <i class="fas fa-gear" style="color: #ffffff; font-size: 22px;" title="System Automation"></i>
+                                <i class="fas fa-shield-halved" style="color: #fbbf24; font-size: 22px;" title="Secure Command Validation"></i>
+                            </div>
+                            <div class="work-details">
+                                <div class="work-details-inner">
+                                    <p class="work-desc">Developed a "JARVIS-like AI Assistant" capable of understanding and executing voice commands in real time. The system integrates advanced AI, real-time communication, and multimedia control to deliver an interactive and automated user experience. It leverages the "Google Gemini API" for intelligent reasoning and task execution, integrated with "LiveKit" for seamless voice interaction. Features include real-time voice recognition, automated YouTube search and playback via "yt-dlp", and local system automation for opening applications and executing secure commands. Security is prioritized through API key protection, command validation, and restricted access to sensitive operations.</p>
                                 </div>
                             </div>
                         </div>
@@ -350,25 +653,24 @@
         <!-- Contact Section -->
         <section id="contact" style="background: var(--bg-alt);">
             <div class="container reveal">
-                <span class="label text-center" style="display: block;">Get In Touch</span>
-                <h2 class="title text-center" style="margin-bottom: 48px;">Let's Build Something Secure</h2>
+                <h2 class="title text-center" style="margin-bottom: 0px; margin-top: 0px;">Let's Build Something Secure</h2>
                 
                 <div class="contact-wrapper">
                     <form id="contact-form" class="contact-form">
                         
                         <div class="form-grid">
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="name">Name</label>
                                 <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group full-width">
                                 <label for="email">Email <span id="email-verified-badge" style="display: none; color: #10b981; margin-left: 8px;"><i class="fas fa-check-circle"></i> Verified</span></label>
                                 <div class="input-with-btn">
                                     <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                                     <button type="button" id="send-otp-btn" class="inline-btn">Send OTP</button>
                                 </div>
                             </div>
-                            <div class="form-group" id="otp-group" style="display: none;">
+                            <div class="form-group full-width" id="otp-group" style="display: none; grid-column: span 2;">
                                 <label for="otp">Enter OTP</label>
                                 <div class="input-with-btn">
                                     <input type="text" id="otp" placeholder="6-digit code" maxlength="6">
@@ -440,7 +742,7 @@
                             </div>
                             <h3 class="exp-title">CYBERSECURITY & DEFENSE</h3>
                             <p class="exp-description">
-                                Focused on system hardening and resource management. I am proficient in the configuration and orchestration of **Virtual Machines (VMs)** and have integrated core **Cryptography (AES256, Hashing)** concepts into my security workflows. During my Network Security course, I achieved an <strong>O Grade</strong> and built a **Secure Password Manager** project (featured in the Projects section), demonstrating my ability to implement defensive strategies and build resilient tools for data protection.
+                                Focused on system hardening and resource management. I am proficient in the configuration and orchestration of "Virtual Machines (VMs)" and have integrated core "Cryptography (AES256, Hashing)" concepts into my security workflows. During my Network Security course, I achieved an <strong>O Grade</strong> and built a "Secure Password Manager" project (featured in the Projects section), demonstrating my ability to implement defensive strategies and build resilient tools for data protection.
                             </p>
                         </div>
 
@@ -451,7 +753,7 @@
                             </div>
                             <h3 class="exp-title">VULNERABILITY ASSESSMENT & PENTESTING</h3>
                             <p class="exp-description">
-                                Skilled in identifying system weaknesses and performing controlled exploitations. I have deep practical experience with **Nessus, Nmap, and Metasploit**, including the successful execution of the **EternalBlue** exploit. Furthermore, I have presented real-time hacking demonstrations and developed a comprehensive understanding of firewall configurations and proactive defense mechanisms.
+                                Skilled in identifying system weaknesses and performing controlled exploitations. I have deep practical experience with "Nessus, Nmap, and Metasploit", including the successful execution of the "EternalBlue" exploit. Furthermore, I have presented real-time hacking demonstrations and developed a comprehensive understanding of firewall configurations and proactive defense mechanisms.
                             </p>
                         </div>
 
@@ -473,7 +775,7 @@
                             </div>
                             <h3 class="exp-title">MODERN TOOLSET</h3>
                             <p class="exp-description">
-                                Achieved an <strong>O Grade</strong> in **SRMP: Security Risk and Management Principles**, where I developed a deep passion for vulnerability analysis and auditing. I am proficient in assessing security risk scores, managing detailed audit workflows, and mapping threat levels. This analytical expertise is bolstered by hands-on usage of **Nmap** for discovery, **Velociraptor** for endpoint monitoring, and **Python** scripting to automate security logic and protective tasks.
+                                Achieved an <strong>O Grade</strong> in "SRMP: Security Risk and Management Principles", where I developed a deep passion for vulnerability analysis and auditing. I am proficient in assessing security risk scores, managing detailed audit workflows, and mapping threat levels. This analytical expertise is bolstered by hands-on usage of "Nmap" for discovery, "Velociraptor" for endpoint monitoring, and "Python" scripting to automate security logic and protective tasks.
                             </p>
                         </div>
 
@@ -492,13 +794,63 @@
                     <!-- Right: Sticky Visuals -->
                     <div class="exp-visual-sticky">
                         <div class="exp-photo-stack journey-photo-stack">
-                            <div class="journey-photo active" style="background-image: url(&quot;{{ url_for('static', filename='image/j_1.jpg') }}&quot;); background-size: cover; background-position: center;"></div>
-                            <div class="journey-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/j_2.jpg') }}&quot;); background-size: cover; background-position: center;"></div>
-                            <div class="journey-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/j_3.jpg') }}&quot;); background-size: cover; background-position: center;"></div>
-                            <div class="journey-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/j_4.jpg') }}&quot;); background-size: cover; background-position: center;"></div>
-                            <div class="journey-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/j_5.jpg') }}&quot;); background-size: cover; background-position: center;"></div>
-                            <div class="journey-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/j_6.jpg') }}&quot;); background-size: cover; background-position: center;"></div>
-                            <div class="journey-photo" style="background-image: url(&quot;{{ url_for('static', filename='image/j_7.jpg') }}&quot;); background-size: cover; background-position: center;"></div>
+                            <div class="journey-photo active" style="background-image: url('static/image/j_1.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="journey-photo" style="background-image: url('static/image/j_2.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="journey-photo" style="background-image: url('static/image/j_3.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="journey-photo" style="background-image: url('static/image/j_4.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="journey-photo" style="background-image: url('static/image/j_5.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="journey-photo" style="background-image: url('static/image/j_6.jpg'); background-size: cover; background-position: center;"></div>
+                            <div class="journey-photo" style="background-image: url('static/image/j_7.jpg'); background-size: cover; background-position: center;"></div>
+                        </div>
+
+                        <!-- Skills & Tools Flow Ticker -->
+                        <div class="journey-skills-box">
+                            <div class="skills-grid-mini">
+                                <!-- First Set -->
+                                <i class="fas fa-network-wired" title="Networking Basics"></i>
+                                <i class="fas fa-shield-alt" title="Cyber Security"></i>
+                                <i class="fas fa-magnifying-glass-chart" title="Vulnerability Assessment"></i>
+                                <i class="fas fa-user-secret" title="Penetration Testing"></i>
+                                <i class="fas fa-file-contract" title="GRC Frameworks"></i>
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="devicon-linux-plain colored" title="Linux OS"></i>
+                                <i class="devicon-windows8-original colored" title="Windows OS"></i>
+                                <i class="devicon-apple-original" title="macOS"></i>
+                                <i class="fas fa-server" title="Virtual Machine Handling"></i>
+                                <i class="fas fa-language" title="English & Tamil Communication"></i>
+                                <i class="fas fa-square-code" style="color: #4285f4;" title="App Script Automation"></i>
+                                <i class="fas fa-shield-virus" style="color: #ef4444;" title="Nessus"></i>
+                                <i class="fas fa-tower-broadcast" style="color: #3b82f6;" title="Nmap"></i>
+                                <i class="fas fa-vial" style="color: #fbbf24;" title="Nikto"></i>
+                                <i class="fas fa-biohazard" style="color: #ef4444;" title="Metasploit"></i>
+                                <i class="fas fa-dragon" style="color: #10b981;" title="Velociraptor"></i>
+                                <i class="fas fa-file-excel" style="color: #1d7c4d;" title="Excel"></i>
+                                <i class="fas fa-file-word" style="color: #2b579a;" title="Word"></i>
+                                <i class="fas fa-file-powerpoint" style="color: #b7472a;" title="PowerPoint"></i>
+                                <i class="fas fa-table" style="color: #1d7c4d;" title="Google Sheets"></i>
+                                <!-- Second Set for Loop -->
+                                <i class="fas fa-network-wired" title="Networking Basics"></i>
+                                <i class="fas fa-shield-alt" title="Cyber Security"></i>
+                                <i class="fas fa-magnifying-glass-chart" title="Vulnerability Assessment"></i>
+                                <i class="fas fa-user-secret" title="Penetration Testing"></i>
+                                <i class="fas fa-file-contract" title="GRC Frameworks"></i>
+                                <i class="devicon-python-plain colored" title="Python"></i>
+                                <i class="devicon-linux-plain colored" title="Linux OS"></i>
+                                <i class="devicon-windows8-original colored" title="Windows OS"></i>
+                                <i class="devicon-apple-original" title="macOS"></i>
+                                <i class="fas fa-server" title="Virtual Machine Handling"></i>
+                                <i class="fas fa-language" title="English & Tamil Communication"></i>
+                                <i class="fas fa-square-code" style="color: #4285f4;" title="App Script Automation"></i>
+                                <i class="fas fa-shield-virus" style="color: #ef4444;" title="Nessus"></i>
+                                <i class="fas fa-tower-broadcast" style="color: #3b82f6;" title="Nmap"></i>
+                                <i class="fas fa-vial" style="color: #fbbf24;" title="Nikto"></i>
+                                <i class="fas fa-biohazard" style="color: #ef4444;" title="Metasploit"></i>
+                                <i class="fas fa-dragon" style="color: #10b981;" title="Velociraptor"></i>
+                                <i class="fas fa-file-excel" style="color: #1d7c4d;" title="Excel"></i>
+                                <i class="fas fa-file-word" style="color: #2b579a;" title="Word"></i>
+                                <i class="fas fa-file-powerpoint" style="color: #b7472a;" title="PowerPoint"></i>
+                                <i class="fas fa-table" style="color: #1d7c4d;" title="Google Sheets"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -526,18 +878,10 @@
                     <a href="mailto:veeranpandian62@gmail.com" class="magnetic" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="{{ url_for('static', filename='cv.pdf') }}" download class="magnetic" title="Download CV">
+                    <a href="cv.pdf" download class="magnetic" title="Download CV">
                         <i class="fas fa-file-download"></i>
                     </a>
                 </div>
-            </div>
-            <div
-                style="border-top: 1px solid var(--border-light); padding-top: 32px; text-align: center; margin-top: 40px;">
-                <p style="font-size: 14px; color: var(--text-dim);">
-                    © 2026 Veerapandi G. All rights reserved. Built with <i class="fas fa-heart"
-                        style="color: #ef4444;"></i> and precision.
-                </p>
-            </div>
         </div>
     </footer>
 
@@ -545,7 +889,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Toast Container for UX Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="static/js/script.js?v=2.0"></script>
     <!-- Experience Scroller Script (Cyber Voyage Exact Logic) -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {

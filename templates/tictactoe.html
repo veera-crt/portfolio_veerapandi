@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe | VG & CO AI Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;800&family=Syne:wght@400;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <style>
+        :root {
+            --bg-color: #050505;
+            --accent: #3b82f6;
+            --secondary: #6366f1;
+            --text: #ffffff;
+            --text-sec: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #050505 100%);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--accent), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -2px;
+        }
+
+        .game-mode-selector {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 12px 24px;
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn.active {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px auto;
+            width: 320px;
+            height: 320px;
+            background: var(--glass);
+            padding: 12px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .cell {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            height: 90px;
+            width: 90px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cell:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: scale(0.98);
+        }
+
+        .cell.x { color: var(--accent); text-shadow: 0 0 15px var(--accent); }
+        .cell.o { color: var(--secondary); text-shadow: 0 0 15px var(--secondary); }
+
+        .status {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-sec);
+            min-height: 1.5em;
+        }
+
+        .room-controls {
+            margin-top: 20px;
+            display: none;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .input-group {
+            display: flex;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 5px;
+            overflow: hidden;
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            outline: none;
+            width: 120px;
+        }
+
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            text-decoration: none;
+            color: var(--text-sec);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+
+        .back-link:hover { color: white; }
+
+        .game-over-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.4s;
+            z-index: 100;
+        }
+
+        .game-over-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .winner-text {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-family: 'Syne', sans-serif;
+        }
+
+        /* Particles effect in background */
+        #bg-canvas {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .room-id-display {
+            font-family: monospace;
+            background: rgba(255,255,255,0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-left: 10px;
+            color: var(--accent);
+        }
+
+        @media (max-width: 400px) {
+            .board {
+                width: 280px;
+                height: 280px;
+                gap: 8px;
+            }
+            .cell {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    
+    <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Portfolio</a>
+
+    <div class="container">
+        <h1>TIC TAC TOE</h1>
+
+        <div class="game-mode-selector">
+            <button class="btn active" id="mode-ai" onclick="setMode('ai')">
+                <i class="fas fa-robot"></i> VS AI
+            </button>
+            <button class="btn" id="mode-friends" onclick="setMode('friends')">
+                <i class="fas fa-users"></i> FRIENDS
+            </button>
+        </div>
+
+        <div class="status" id="game-status">Your turn (X)</div>
+
+        <div class="board" id="board">
+            <div class="cell" onclick="makeMove(0)"></div>
+            <div class="cell" onclick="makeMove(1)"></div>
+            <div class="cell" onclick="makeMove(2)"></div>
+            <div class="cell" onclick="makeMove(3)"></div>
+            <div class="cell" onclick="makeMove(4)"></div>
+            <div class="cell" onclick="makeMove(5)"></div>
+            <div class="cell" onclick="makeMove(6)"></div>
+            <div class="cell" onclick="makeMove(7)"></div>
+            <div class="cell" onclick="makeMove(8)"></div>
+            
+            <div class="game-over-overlay" id="overlay">
+                <div class="winner-text" id="winner-msg">X WINS!</div>
+                <button class="btn" onclick="resetGame()">PLAY AGAIN</button>
+            </div>
+        </div>
+
+        <div class="room-controls" id="room-controls">
+            <div class="input-group">
+                <input type="text" id="room-id" placeholder="Room ID">
+                <button class="btn" style="padding: 10px 15px;" onclick="joinRoom()">JOIN</button>
+            </div>
+            <button class="btn" onclick="createRoom()">NEW ROOM</button>
+            <div id="room-info" style="margin-top: 10px; width: 100%; display: none;">
+                Room: <span class="room-id-display" id="current-room-id"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let gameState = Array(9).fill(null);
+        let currentPlayer = 'X';
+        let gameActive = true;
+        let mode = 'ai';
+        let mySymbol = 'X';
+        let roomID = null;
+        const socket = io();
+
+        const boardElement = document.getElementById('board');
+        const cells = document.querySelectorAll('.cell');
+        const statusElement = document.getElementById('game-status');
+        const overlay = document.getElementById('overlay');
+        const winnerMsg = document.getElementById('winner-msg');
+
+        function setMode(m) {
+            mode = m;
+            document.querySelectorAll('.game-mode-selector .btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`mode-${m}`).classList.add('active');
+            document.getElementById('room-controls').style.display = m === 'friends' ? 'flex' : 'none';
+            resetGame();
+        }
+
+        function createRoom() {
+            const id = Math.random().toString(36).substring(2, 8).toUpperCase();
+            document.getElementById('room-id').value = id;
+            joinRoom();
+        }
+
+        function joinRoom() {
+            const id = document.getElementById('room-id').value.trim();
+            if(!id) return alert("Enter Room ID");
+            roomID = id;
+            socket.emit('join', {room: roomID});
+            document.getElementById('room-info').style.display = 'block';
+            document.getElementById('current-room-id').innerText = roomID;
+            statusElement.innerText = "Waiting for friend...";
+        }
+
+        socket.on('joined', (data) => {
+            mySymbol = data.symbol;
+            statusElement.innerText = `Joined room as ${mySymbol}. `;
+            if(mySymbol === 'O') {
+                statusElement.innerText += "Waiting for X...";
+            } else {
+                statusElement.innerText += "Wait for O to join.";
+            }
+            resetGame();
+        });
+
+        socket.on('start', () => {
+            gameActive = true;
+            updateStatus();
+        });
+
+        socket.on('move', (data) => {
+            if(data.player !== currentPlayer) {
+                applyMove(data.index, data.player);
+            }
+        });
+
+        function makeMove(index) {
+            if (!gameActive || gameState[index]) return;
+            
+            if (mode === 'friends') {
+                if (currentPlayer !== mySymbol) return;
+                socket.emit('move', {room: roomID, index: index, player: mySymbol});
+            }
+
+            applyMove(index, currentPlayer);
+
+            if (gameActive && mode === 'ai' && currentPlayer === 'O') {
+                setTimeout(aiMove, 500);
+            }
+        }
+
+        function applyMove(index, player) {
+            gameState[index] = player;
+            cells[index].innerText = player;
+            cells[index].classList.add(player.toLowerCase());
+            
+            if (checkWinner()) {
+                endGame(`${player} WINS!`);
+            } else if (gameState.every(cell => cell !== null)) {
+                endGame("IT'S A DRAW!");
+            } else {
+                currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                updateStatus();
+            }
+        }
+
+        function updateStatus() {
+            if (mode === 'friends') {
+                statusElement.innerText = currentPlayer === mySymbol ? "Your turn" : "Waiting for friend...";
+            } else {
+                statusElement.innerText = currentPlayer === 'X' ? "Your turn (X)" : "AI is thinking...";
+            }
+        }
+
+        function checkWinner() {
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            return wins.some(w => gameState[w[0]] && gameState[w[0]] === gameState[w[1]] && gameState[w[0]] === gameState[w[2]]);
+        }
+
+        function endGame(msg) {
+            gameActive = false;
+            winnerMsg.innerText = msg;
+            overlay.classList.add('show');
+        }
+
+        function resetGame() {
+            gameState = Array(9).fill(null);
+            cells.forEach(c => {
+                c.innerText = '';
+                c.classList.remove('x', 'o');
+            });
+            currentPlayer = 'X';
+            gameActive = true;
+            overlay.classList.remove('show');
+            updateStatus();
+        }
+
+        function aiMove() {
+            if (!gameActive) return;
+            const bestMove = minimax(gameState, 'O').index;
+            makeMove(bestMove);
+        }
+
+        function minimax(newBoard, player) {
+            const availSpots = newBoard.map((v, i) => v === null ? i : null).filter(v => v !== null);
+
+            if (checkWinnerForMinimax(newBoard, 'X')) return {score: -10};
+            if (checkWinnerForMinimax(newBoard, 'O')) return {score: 10};
+            if (availSpots.length === 0) return {score: 0};
+
+            const moves = [];
+            for (let i = 0; i < availSpots.length; i++) {
+                const move = {};
+                move.index = availSpots[i];
+                newBoard[availSpots[i]] = player;
+
+                if (player === 'O') {
+                    const result = minimax(newBoard, 'X');
+                    move.score = result.score;
+                } else {
+                    const result = minimax(newBoard, 'O');
+                    move.score = result.score;
+                }
+
+                newBoard[availSpots[i]] = null;
+                moves.push(move);
+            }
+
+            let bestMove;
+            if (player === 'O') {
+                let bestScore = -10000;
+                for (let i = 0; i < moves.length; i++) {
+                    if (moves[i].score > bestScore) {
+                        bestScore = moves[i].score;
+                        bestMove = i;
+                    }
+                }
+            } else {
+                let bestScore = 10000;
+                for (let i = 0; i < moves.length; i++) {
+                    if (moves[i].score < bestScore) {
+                        bestScore = moves[i].score;
+                        bestMove = i;
+                    }
+                }
+            }
+            return moves[bestMove];
+        }
+
+        function checkWinnerForMinimax(board, p) {
+            const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+            return wins.some(w => board[w[0]] === p && board[w[1]] === p && board[w[2]] === p);
+        }
+
+        // Simple background canvas animation
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, particles = [];
+
+        function init() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            particles = [];
+            for(let i = 0; i < 50; i++) particles.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: Math.random() * 2 + 1,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, w, h);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fill();
+                p.x += p.vx; p.y += p.vy;
+                if(p.x < 0) p.x = w; if(p.x > w) p.x = 0;
+                if(p.y < 0) p.y = h; if(p.y > h) p.y = 0;
+            });
+            requestAnimationFrame(draw);
+        }
+
+        window.addEventListener('resize', init);
+        init(); draw();
+    </script>
+</body>
+</html>

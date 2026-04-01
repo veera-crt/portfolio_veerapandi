@@ -1,49 +1,81 @@
+/* 0. Global UX Transmitters (Toast & Handlers) */
+function showToast(message, type = 'warning') {
+    const container = document.getElementById('toast-container');
+    if (!container) return;
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    
+    let icon = 'fa-exclamation-triangle';
+    if (type === 'success') icon = 'fa-check-circle';
+    if (type === 'error') icon = 'fa-times-circle';
+
+    toast.innerHTML = `
+        <div class="toast-icon">
+            <i class="fas ${icon}"></i>
+        </div>
+        <div class="toast-content">${message}</div>
+    `;
+
+    container.appendChild(toast);
+
+    // Fade in
+    setTimeout(() => toast.classList.add('show'), 10);
+
+    // Auto-destruct
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 600);
+    }, 5000);
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
     /* 1. Master Particle Context */
     const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    let particles = [];
-    const pCount = 50;
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const pCount = 50;
 
-    function init() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-
-    class P {
-        constructor() {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            this.s = Math.random() * 2 + 0.5;
-            this.vx = Math.random() * 0.4 - 0.2;
-            this.vy = Math.random() * 0.4 - 0.2;
+        function init() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
-        draw() {
-            ctx.fillStyle = 'rgba(0, 102, 204, 0.2)';
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2);
-            ctx.fill();
+
+        class P {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.s = Math.random() * 2 + 0.5;
+                this.vx = Math.random() * 0.4 - 0.2;
+                this.vy = Math.random() * 0.4 - 0.2;
+            }
+            draw() {
+                ctx.fillStyle = 'rgba(0, 102, 204, 0.2)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.s, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
         }
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-            if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+        init();
+        for (let i = 0; i < pCount; i++) particles.push(new P());
+
+        function anim() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(anim);
         }
+        anim();
+        window.addEventListener('resize', init);
     }
-
-    init();
-    for (let i = 0; i < pCount; i++) particles.push(new P());
-
-    function anim() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => { p.update(); p.draw(); });
-        requestAnimationFrame(anim);
-    }
-    anim();
-    window.addEventListener('resize', init);
-
-
 
     /* 3. Magnetic Element Interaction */
     document.querySelectorAll('.magnetic').forEach(m => {
@@ -65,25 +97,26 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     /* 5. Scroll & Progress Tracking */
-    window.addEventListener('scroll', () => {
-        const top = document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const pct = (top / height) * 100;
-        document.getElementById('progress').style.width = pct + '%';
-    }, { passive: true });
+    const progressEl = document.getElementById('progress');
+    if (progressEl) {
+        window.addEventListener('scroll', () => {
+            const top = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const pct = (top / height) * 100;
+            progressEl.style.width = pct + '%';
+        }, { passive: true });
+    }
 
-    /* Nav Active Link Sync (Robust Area-Based Observation) */
+    /* Nav Active Link Sync */
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-links a');
     const sectionVisiblePixels = {};
 
     const navObserver = new IntersectionObserver((entries) => {
-        // Update visible pixel count for sections that changed
         entries.forEach(entry => {
             sectionVisiblePixels[entry.target.id] = entry.boundingClientRect.height * entry.intersectionRatio;
         });
 
-        // Find which section occupies the most space on screen
         let maxPixels = 0;
         let current = '';
 
@@ -96,12 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Fallback: If scrolled to the absolute bottom of the page, force last section active
         if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 50) {
             current = sections[sections.length - 1].getAttribute('id');
         }
 
-        // Apply active class
         if (current) {
             navLinks.forEach(a => {
                 a.classList.remove('active');
@@ -112,8 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { 
         root: null, 
-        rootMargin: '-80px 0px 0px 0px', // ignore the navbar area slightly
-        threshold: Array.from({length: 21}, (_, i) => i * 0.05) // check visibility every 5% 
+        rootMargin: '-80px 0px 0px 0px',
+        threshold: Array.from({length: 21}, (_, i) => i * 0.05) 
     });
 
     sections.forEach(s => {
@@ -121,22 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
         navObserver.observe(s);
     });
 
-    /* 6. Form Transmission Intelligence */
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', () => {
-            const b = form.querySelector('button');
-            const t = b.textContent;
-            b.textContent = 'Transmitting Data...';
-            b.disabled = true;
-            setTimeout(() => {
-                alert('Success: Transmission received by Secure Management.');
-                b.textContent = t;
-                b.disabled = false;
-                form.reset();
-            }, 1500);
-        });
-    }
     /* 7. Grid Interceptor Rockets */
     function launchRocket(dir) {
         const h = document.getElementById('hero');
@@ -152,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (dir === 'up') {
             const x = centerX - (grid * 2);
-            r.style.left = `${x - 3}px`; /* Center on 2px line */
+            r.style.left = `${x - 3}px`;
             r.style.top = `${dim.height}px`;
             setTimeout(() => {
                 r.style.transform = `translateY(-${dim.height + 100}px)`;
@@ -199,19 +214,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 slides[current].classList.remove('active');
                 current = (current + 1) % slides.length;
                 slides[current].classList.add('active');
-            }, 2500); // Wait 2.5 seconds to show each slide properly considering the fade effect
+            }, 2500);
         }
     });
 
-    /* 9. Project Details Accordion & Layout Expansion */
+    /* 9. Project Details Accordion */
     document.querySelectorAll('.expand-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
             const card = e.currentTarget.closest('.work-card');
             const details = card.querySelector('.work-details');
-            
             btn.classList.toggle('expanded');
             details.classList.toggle('expanded');
-            card.classList.toggle('expanded-card'); // Triggers horizontal layout
+            card.classList.toggle('expanded-card');
         });
     });
 
@@ -229,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sendOtpBtn.addEventListener('click', () => {
             const email = emailInput.value.trim();
             if (!email || !email.includes('@')) {
-                alert('Please enter a valid email address.');
+                showToast('Please enter a valid email address.', 'warning');
                 return;
             }
 
@@ -246,16 +260,16 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(data => {
                 if (data.success) {
                     otpGroup.style.display = 'block';
-                    alert('OTP has been sent to your email. Please check your inbox (and spam folder).');
+                    showToast('OTP has been sent to your email. Please check your inbox.', 'success');
                     sendOtpBtn.textContent = 'Resend OTP';
                 } else {
-                    alert('Error: ' + data.message);
+                    showToast('Error: ' + data.message, 'error');
                     sendOtpBtn.textContent = originalText;
                 }
             })
             .catch(err => {
                 console.error(err);
-                alert('Connection error. Is the server running?');
+                showToast('Connection error. Is the server running?', 'error');
                 sendOtpBtn.textContent = originalText;
             })
             .finally(() => {
@@ -270,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const otp = otpInput.value.trim();
 
             if (!otp || otp.length < 6) {
-                alert('Please enter the 6-digit OTP.');
+                showToast('Please enter the 6-digit OTP.', 'warning');
                 return;
             }
 
@@ -285,22 +299,20 @@ document.addEventListener('DOMContentLoaded', () => {
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    // Success state
                     emailBadge.style.display = 'inline-flex';
                     otpGroup.style.display = 'none';
                     sendOtpBtn.style.display = 'none';
                     emailInput.readOnly = true;
                     emailInput.style.opacity = '0.7';
                     isEmailVerified = true;
-                    contactSubmitBtn.title = 'Dispatch your message';
-                    alert('Email verified successfully!');
+                    showToast('Email verified successfully!', 'success');
                 } else {
-                    alert('Verification failed: ' + data.message);
+                    showToast('Verification failed: ' + data.message, 'error');
                 }
             })
             .catch(err => {
                 console.error(err);
-                alert('Connection error during verification.');
+                showToast('Connection error during verification.', 'error');
             })
             .finally(() => {
                 verifyOtpBtn.textContent = 'Verify';
@@ -318,11 +330,10 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             if (!isEmailVerified) {
-                alert('Please verify your email address first before sending the message!');
+                showToast('Please verify your email address first before sending the message!', 'warning');
                 return;
             }
             
-            // Show loading state
             const submitBtn = contactForm.querySelector('.submit-btn');
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<span>Transmitting...</span> <i class="fas fa-satellite-dish fa-spin"></i>';
@@ -332,53 +343,39 @@ document.addEventListener('DOMContentLoaded', () => {
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
 
-            resultElement.style.display = 'block';
-            resultElement.textContent = "Please wait...";
-            resultElement.classList.remove('success', 'error');
-
             fetch('/contact', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                 body: json
             })
             .then(async (response) => {
                 let jsonResponse = await response.json();
                 if (jsonResponse.success) {
-                    resultElement.classList.add('success');
-                    resultElement.textContent = "Transmission successful! Email sent.";
+                    showToast('Transmission successful! Email sent.', 'success');
                     contactForm.reset();
                     
-                    // Reset verification system
+                    // Total State Reset
                     isEmailVerified = false;
                     emailBadge.style.display = 'none';
                     sendOtpBtn.style.display = 'inline-flex';
+                    sendOtpBtn.textContent = 'Send OTP'; // Fix: Revert text
+                    sendOtpBtn.disabled = false;
+                    
                     emailInput.readOnly = false;
                     emailInput.style.opacity = '1';
                     otpGroup.style.display = 'none';
                     if (otpInput) otpInput.value = '';
                 } else {
-                    console.log(response);
-                    resultElement.classList.add('error');
-                    resultElement.textContent = jsonResponse.message || "Transmission failed. Systems error.";
+                    showToast(jsonResponse.message || 'Transmission failed.', 'error');
                 }
             })
             .catch(error => {
-                console.log(error);
-                resultElement.classList.add('error');
-                resultElement.textContent = "Unable to connect to transmission relays. Please check your connection.";
+                console.error(error);
+                showToast('Unable to connect to transmission relays.', 'error');
             })
-            .then(function() {
-                // Restore button
+            .finally(() => {
                 submitBtn.innerHTML = originalBtnText;
                 submitBtn.disabled = false;
-                
-                // Hide result after 8 seconds
-                setTimeout(() => {
-                    resultElement.style.display = 'none';
-                }, 8000);
             });
         });
     }
