@@ -94,6 +94,29 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('resize', init);
     }
 
+    /* 2. Mobile Menu Controller */
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileNavLinks = document.querySelector('.nav-links');
+    const mobileNavLinksItems = document.querySelectorAll('.nav-links a');
+
+    if (mobileMenuBtn && mobileNavLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNavLinks.classList.toggle('active');
+            // Toggle body scroll to prevent background scrolling when menu is open
+            document.body.style.overflow = mobileNavLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when a link is clicked
+        mobileNavLinksItems.forEach(item => {
+            item.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileNavLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+
     /* 3. Magnetic Element Interaction */
     document.querySelectorAll('.magnetic').forEach(m => {
         m.addEventListener('mousemove', (e) => {
