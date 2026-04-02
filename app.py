@@ -10,7 +10,7 @@ psycopg2_patcher.make_psycopg_green()
 
 import hashlib  # [SECURE] Added for SHA-256 hashing
 from dotenv import load_dotenv
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, jsonify, render_template, send_from_directory, make_response
 from flask_cors import CORS
 import smtplib
 from email.mime.text import MIMEText
@@ -97,6 +97,14 @@ def send_email_task(to_email, subject, body):
 @app.route('/', methods=['GET'])
 def home():
     return render_template('index.html')
+
+@app.route('/static/<path:filename>')
+def custom_static(filename):
+    """Saves static files with high cache-control headers for maximum speed."""
+    response = make_response(send_from_directory(app.static_folder, filename))
+    # Cache for 1 year (31,536,000 seconds)
+    response.headers['Cache-Control'] = 'public, max-age=31536000, immutable'
+    return response
 
 @app.route('/tictactoe')
 def tictactoe():
