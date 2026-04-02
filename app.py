@@ -1,13 +1,7 @@
-import eventlet
-eventlet.monkey_patch(all=True)
-
 import random
 import time
 import os
 import psycopg2
-from eventlet.support import psycopg2_patcher
-psycopg2_patcher.make_psycopg_green()
-
 import hashlib  # [SECURE] Added for SHA-256 hashing
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, send_from_directory, make_response
@@ -24,7 +18,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 Compress(app)  # Enable Gzip compression for all text-based assets (HTML, CSS, JS)
-socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode='threading')
 
 # [FALLBACK] In-memory store if Neon is unreachable
 # Use this as secondary storage to ensure service continuity
