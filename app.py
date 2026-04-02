@@ -12,6 +12,7 @@ import hashlib  # [SECURE] Added for SHA-256 hashing
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template, send_from_directory, make_response
 from flask_cors import CORS
+from flask_compress import Compress
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -22,6 +23,7 @@ load_dotenv()
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
+Compress(app)  # Enable Gzip compression for all text-based assets (HTML, CSS, JS)
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode='eventlet')
 
 # [FALLBACK] In-memory store if Neon is unreachable

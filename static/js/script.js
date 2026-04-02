@@ -31,6 +31,17 @@ function showToast(message, type = 'warning') {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    /* 0. Preloader Logic */
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            // Slight delay for smooth reveal
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+            }, 800);
+        }
+    });
+
     /* 1. Master Particle Context */
     const canvas = document.getElementById('particle-canvas');
     if (canvas) {
