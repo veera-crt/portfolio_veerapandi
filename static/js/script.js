@@ -31,16 +31,22 @@ function showToast(message, type = 'warning') {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    /* 0. Preloader Logic */
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            // Slight delay for smooth reveal
-            setTimeout(() => {
-                preloader.classList.add('loaded');
-            }, 800);
+    /* 0. Preloader Logic & Fail-safe Dismissal */
+    const preloader = document.getElementById('preloader');
+    
+    const dismissPreloader = () => {
+        if (preloader && !preloader.classList.contains('loaded')) {
+            preloader.classList.add('loaded');
         }
+    };
+
+    // Ideal scenario: All assets loaded
+    window.addEventListener('load', () => {
+        setTimeout(dismissPreloader, 500); // Small grace period for visual smoothness
     });
+
+    // Fail-safe: Force dismiss after 2.5 seconds max (Prevents hanging on slow networks)
+    setTimeout(dismissPreloader, 2500);
 
     /* 1. Master Particle Context */
     const canvas = document.getElementById('particle-canvas');
