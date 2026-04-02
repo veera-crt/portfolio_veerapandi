@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(dismissPreloader, 500); // Small grace period for visual smoothness
     });
 
-    // Fail-safe: Force dismiss after 2.5 seconds max (Prevents hanging on slow networks)
-    setTimeout(dismissPreloader, 2500);
+    // Fail-safe: Force dismiss after 1.5 seconds max (Prevents hanging on slow networks/Brave)
+    setTimeout(dismissPreloader, 1500);
 
     /* 1. Master Particle Context */
     const canvas = document.getElementById('particle-canvas');

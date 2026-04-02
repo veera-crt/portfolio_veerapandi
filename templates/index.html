@@ -41,6 +41,17 @@
         </div>
     </div>
 
+    <!-- Emergency Preloader Recovery Script (Brave/Slow Link Protection) -->
+    <script>
+        setTimeout(function() {
+            var preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('loaded')) {
+                preloader.classList.add('loaded');
+                console.log('Preloader: Emergency dismissal triggered.');
+            }
+        }, 1800);
+    </script>
+
     <!-- Environmental FX -->
     <canvas id="particle-canvas"></canvas>
 
