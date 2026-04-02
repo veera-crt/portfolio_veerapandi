@@ -152,11 +152,10 @@ def send_otp():
             temp_otp_store[user_email] = {"otp": otp_hash, "expiry": expiry}
             print(f"OTP stored in Memory for {user_email}")
 
-        # Dispatch via SocketIO background task for eventlet compatibility
+        # Synchronous dispatch for critical OTP integrity
         body = f"Hello,\n\nYour verification OTP is: {otp}\nThis OTP is valid for 4 minutes.\n\nIf you didn't request this, please ignore this email."
         subject = "Verification OTP - Portfolio Contact"
-        
-        socketio.start_background_task(send_email_task, user_email, subject, body)
+        send_email_task(user_email, subject, body)
         
         return jsonify({
             "success": True, 
@@ -269,8 +268,8 @@ def contact():
         {message}
         """
 
-        # Dispatch via SocketIO background task
-        socketio.start_background_task(send_email_task, RECEIVER_EMAIL, subject, body)
+        # Synchronous dispatch for critical enquiry reliability
+        send_email_task(RECEIVER_EMAIL, subject, body)
 
         return jsonify({"success": True, "message": "Enquiry received! Transmission underway."}), 200
 
