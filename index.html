@@ -882,6 +882,86 @@
             color: var(--text);
         }
 
+        /* Vertical Side Menus */
+        .side-menu-left {
+            position: fixed;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .side-menu-left .side-menu-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .side-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--border), transparent);
+        }
+
+        .side-nav-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-dim);
+            text-decoration: none;
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            transition: all 0.3s ease;
+            padding: 8px 0;
+            display: inline-block;
+        }
+
+        .side-nav-link:hover,
+        .side-nav-link.active {
+            color: var(--amber);
+            text-shadow: 0 0 8px rgba(245, 162, 93, 0.4);
+        }
+
+        .side-menu-right {
+            position: fixed;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .side-menu-right .side-menu-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .side-email-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.12em;
+            color: var(--text-dim);
+            text-decoration: none;
+            writing-mode: vertical-rl;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        .side-email-link:hover {
+            color: var(--amber);
+        }
+
+        @media (max-width: 1279px) {
+            .side-menu-left,
+            .side-menu-right {
+                display: none !important;
+            }
+        }
+
         /* Media Queries responsiveness */
         @media(max-width:840px) {
             .proj-grid {
@@ -925,6 +1005,28 @@
 </head>
 
 <body>
+    <!-- Left Fixed Vertical Navigation -->
+    <nav class="side-menu-left" aria-label="Vertical navigation">
+        <div class="side-menu-inner">
+            <span class="side-line"></span>
+            <a href="#hero" class="side-nav-link active" data-sec="hero">HOME</a>
+            <a href="#work" class="side-nav-link" data-sec="work">WORK</a>
+            <a href="#experience" class="side-nav-link" data-sec="experience">EXPERIENCE</a>
+            <a href="#notes" class="side-nav-link" data-sec="notes">VALIDATIONS</a>
+            <a href="#contact" class="side-nav-link" data-sec="contact">CONTACT</a>
+            <span class="side-line"></span>
+        </div>
+    </nav>
+
+    <!-- Right Fixed Vertical Info -->
+    <div class="side-menu-right">
+        <div class="side-menu-inner">
+            <span class="side-line"></span>
+            <a href="mailto:veeranpandian62@gmail.com" class="side-email-link" id="sideEmailBtn" title="Click to copy email address">veeranpandian62@gmail.com</a>
+            <span class="side-line"></span>
+        </div>
+    </div>
+
     <div id="header-container"></div>
     <div id="hero-container"></div>
     <div id="work-container"></div>
@@ -1113,6 +1215,48 @@
                     card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
                 });
             });
+
+            // --- Side Menu Copy Trigger ---
+            const sideEmailBtn = document.getElementById('sideEmailBtn');
+            if (sideEmailBtn) {
+                sideEmailBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    copyEmailToClipboard();
+                });
+            }
+
+            // --- Side Menu Scroll-Spy ---
+            const sideLinks = document.querySelectorAll('.side-nav-link');
+            const spySections = [
+                document.getElementById('hero'),
+                document.getElementById('work'),
+                document.getElementById('experience'),
+                document.getElementById('notes'),
+                document.getElementById('contact')
+            ];
+
+            function highlightSideMenu() {
+                let scrollPos = window.scrollY + window.innerHeight / 3;
+
+                spySections.forEach(sec => {
+                    if (!sec) return;
+                    const top = sec.offsetTop;
+                    const height = sec.offsetHeight;
+                    const id = sec.getAttribute('id');
+
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        sideLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('data-sec') === id) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', highlightSideMenu, { passive: true });
+            highlightSideMenu();
         }
 
         // Load all HTML templates asynchronously on DOM ready
