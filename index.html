@@ -885,82 +885,213 @@
             color: var(--text);
         }
 
-        /* Vertical Side Menus */
-        .side-menu-left {
-            position: fixed;
-            left: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-        }
-
-        .side-menu-left .side-menu-inner {
+        /* Dynamic Menu Docking Styles */
+        .nav-links-left {
+            position: absolute;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 12px;
+            width: max-content;
         }
 
-        .side-line {
-            width: 1px;
-            height: 60px;
-            background: linear-gradient(to bottom, transparent, var(--border), transparent);
-        }
-
-        .side-nav-link {
+        /* Default (Landing Page Button Style) when unscrolled */
+        .nav-dock-link {
+            position: fixed;
+            bottom: 48px;
+            left: 50%;
+            /* Apple-like staggered wave starting offsets at bottom */
+            transform: translate(calc(-50% + (var(--i) - 2) * 135px), 0) scale(1.1);
+            background: rgba(20, 24, 29, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            padding: 12px 22px;
+            border-radius: 999px;
+            color: var(--text-muted);
             font-family: var(--font-mono);
             font-size: 11px;
             letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--text-dim);
             text-decoration: none;
-            writing-mode: vertical-lr;
-            transform: rotate(180deg);
-            transition: all 0.3s ease;
-            padding: 8px 0;
-            display: inline-block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(245, 162, 93, 0.05);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.4s ease,
+                        border-color 0.4s ease,
+                        color 0.4s ease,
+                        padding 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.6s ease;
+            transition-delay: calc((4 - var(--i)) * 0.05s); /* Wave effect orderwise left-to-right */
+            z-index: 101;
+            white-space: nowrap;
         }
 
-        .side-nav-link:hover,
-        .side-nav-link.active {
+        .nav-dock-link:hover {
+            color: var(--text);
+            border-color: var(--amber);
+            box-shadow: 0 10px 35px rgba(245, 162, 93, 0.25);
+            transform: translate(calc(-50% + (var(--i) - 2) * 135px), -5px) scale(1.15);
+        }
+
+        .nav-dock-link.active {
             color: var(--amber);
+            border-color: var(--amber);
+            background: rgba(245, 162, 93, 0.05);
+            box-shadow: 0 4px 20px rgba(245, 162, 93, 0.15);
+        }
+
+        /* Scrolled (Docked) State for vertical section links */
+        .scrolled .nav-dock-link {
+            position: fixed;
+            top: 22px;
+            bottom: auto;
+            left: calc(50% - 390px + var(--i) * 75px);
+            transform: translate(-50%, -50%) scale(0.9);
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 6px 10px;
+            box-shadow: none;
+            color: var(--text-dim);
+            transition-delay: calc(var(--i) * 0.05s); /* Wave effect in flight */
+        }
+
+        .scrolled .nav-dock-link:hover {
+            color: var(--text);
+            transform: translate(-50%, -50%) scale(1.02);
+            background: transparent;
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        .scrolled .nav-dock-link.active {
+            color: var(--amber);
+            background: transparent;
+            border-color: transparent;
+            box-shadow: none;
             text-shadow: 0 0 8px rgba(245, 162, 93, 0.4);
         }
 
-        .side-menu-right {
+        /* Right Side Email Dockable Info */
+        .nav-links-right {
+            position: absolute;
+        }
+
+        /* Default Right Side Link (Vertical email badge on load) */
+        .nav-dock-email {
             position: fixed;
             right: 24px;
             top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-        }
-
-        .side-menu-right .side-menu-inner {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .side-email-link {
+            transform: translate(0, -50%) rotate(90deg) scale(1.1);
+            background: rgba(20, 24, 29, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            padding: 12px 22px;
+            border-radius: 999px;
+            color: var(--text-muted);
             font-family: var(--font-mono);
             font-size: 11px;
             letter-spacing: 0.12em;
-            color: var(--text-dim);
             text-decoration: none;
-            writing-mode: vertical-rl;
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        background 0.4s ease,
+                        border-color 0.4s ease,
+                        color 0.4s ease,
+                        padding 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        box-shadow 0.6s ease;
+            z-index: 101;
             cursor: pointer;
-            padding: 8px 0;
+            white-space: nowrap;
         }
 
-        .side-email-link:hover {
-            color: var(--amber);
+        .nav-dock-email:hover {
+            color: var(--text);
+            border-color: var(--amber);
+            transform: translate(4px, -50%) rotate(90deg) scale(1.15);
+            box-shadow: 0 10px 35px rgba(245, 162, 93, 0.2);
+        }
+
+        /* Scrolled (Docked) State for the email link */
+        .scrolled .nav-dock-email {
+            position: fixed;
+            top: 22px;
+            right: auto;
+            left: calc(50% + 50px);
+            transform: translate(0, -50%) rotate(0deg) scale(0.9);
+            background: transparent;
+            border: 1px solid transparent;
+            padding: 6px 10px;
+            box-shadow: none;
+            color: var(--text-dim);
+        }
+
+        .scrolled .nav-dock-email:hover {
+            color: var(--text);
+            transform: translate(0, -50%) rotate(0deg) scale(0.98);
+            background: transparent;
+            border-color: transparent;
+            box-shadow: none;
+        }
+
+        /* Center and Divider Animations */
+        .logo-badge {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scrolled .logo-badge {
+            left: calc(50% + 5px);
+        }
+
+        .vertical-divider {
+            height: 16px;
+            width: 1px;
+            background: var(--border);
+            position: absolute;
+            right: 120px;
+            top: 50%;
+            transform: translateY(-50%);
+            opacity: 0;
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scrolled .vertical-divider {
+            opacity: 1;
+        }
+
+        .chat-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Overrides to make the collapsed/scrolled header work */
+        .scrolled .nav-pill {
+            width: 840px; /* Expands to hold logo, links, email, and button */
         }
 
         @media (max-width: 1279px) {
-            .side-menu-left,
-            .side-menu-right {
+            /* Hide the large floating menu cards on tablet/mobile screens */
+            .nav-dock-link, .nav-dock-email {
+                display: none !important;
+            }
+            .scrolled .nav-pill {
+                width: 156px !important;
+            }
+            .scrolled .vertical-divider {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 879px) {
+            .scrolled .nav-pill {
+                width: 156px !important;
+            }
+            .scrolled .vertical-divider {
                 display: none !important;
             }
         }
