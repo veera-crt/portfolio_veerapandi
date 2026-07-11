@@ -897,7 +897,7 @@
         /* Default (Landing Page Button Style) when unscrolled */
         .nav-dock-link {
             position: fixed;
-            bottom: 48px;
+            top: calc(100vh - 84px);
             left: 50%;
             /* Apple-like staggered wave starting offsets at bottom */
             transform: translate(calc(-50% + (var(--i) - 2) * 135px), 0) scale(1.1);
@@ -914,6 +914,7 @@
             text-decoration: none;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(245, 162, 93, 0.05);
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                         background 0.4s ease,
                         border-color 0.4s ease,
                         color 0.4s ease,
@@ -942,7 +943,6 @@
         .scrolled .nav-dock-link {
             position: fixed;
             top: 22px;
-            bottom: auto;
             left: calc(50% - 390px + var(--i) * 75px);
             transform: translate(-50%, -50%) scale(0.9);
             background: transparent;
@@ -977,9 +977,9 @@
         /* Default Right Side Link (Vertical email badge on load) */
         .nav-dock-email {
             position: fixed;
-            right: 24px;
+            left: calc(100vw - 32px);
             top: 50%;
-            transform: translate(0, -50%) rotate(90deg) scale(1.1);
+            transform: translate(-50%, -50%) rotate(90deg) scale(1.1);
             background: rgba(20, 24, 29, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -993,6 +993,8 @@
             text-decoration: none;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                         background 0.4s ease,
                         border-color 0.4s ease,
                         color 0.4s ease,
@@ -1006,7 +1008,7 @@
         .nav-dock-email:hover {
             color: var(--text);
             border-color: var(--amber);
-            transform: translate(4px, -50%) rotate(90deg) scale(1.15);
+            transform: translate(-50%, -50%) rotate(90deg) scale(1.15) translateY(-4px);
             box-shadow: 0 10px 35px rgba(245, 162, 93, 0.2);
         }
 
@@ -1014,7 +1016,6 @@
         .scrolled .nav-dock-email {
             position: fixed;
             top: 22px;
-            right: auto;
             left: calc(50% + 50px);
             transform: translate(0, -50%) rotate(0deg) scale(0.9);
             background: transparent;
