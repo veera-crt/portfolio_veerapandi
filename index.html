@@ -1651,6 +1651,15 @@
             if (navPill && borderSvg && borderPath) {
                 window.addEventListener('scroll', updateProgressBorder, { passive: true });
                 window.addEventListener('resize', updateProgressBorder);
+
+                // Use ResizeObserver to update the border SVG path whenever the nav-pill transitions or resizes
+                if (window.ResizeObserver) {
+                    const resizeObserver = new ResizeObserver(() => {
+                        updateProgressBorder();
+                    });
+                    resizeObserver.observe(navPill);
+                }
+
                 updateProgressBorder();
                 // Call again after a small timeout to ensure document height is fully resolved
                 setTimeout(updateProgressBorder, 100);
