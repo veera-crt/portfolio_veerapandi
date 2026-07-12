@@ -886,21 +886,9 @@
         }
 
         /* Dynamic Menu Docking Styles */
-        .nav-links-left {
-            position: absolute;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: max-content;
-        }
-
-        /* Default (Landing Page Button Style) when unscrolled */
+        /* Default (Landing Page Scattered Style) when unscrolled */
         .nav-dock-link {
             position: fixed;
-            top: calc(100vh - 84px);
-            left: 50%;
-            /* Apple-like staggered wave starting offsets at bottom */
-            transform: translate(calc(-50% + (var(--i) - 2) * 135px), 0) scale(1.1);
             background: rgba(20, 24, 29, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -915,21 +903,14 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(245, 162, 93, 0.05);
             transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                         top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                         background 0.4s ease,
                         border-color 0.4s ease,
                         color 0.4s ease,
                         padding 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                         box-shadow 0.6s ease;
-            transition-delay: calc((4 - var(--i)) * 0.05s); /* Wave effect orderwise left-to-right */
             z-index: 101;
             white-space: nowrap;
-        }
-
-        .nav-dock-link:hover {
-            color: var(--text);
-            border-color: var(--amber);
-            box-shadow: 0 10px 35px rgba(245, 162, 93, 0.25);
-            transform: translate(calc(-50% + (var(--i) - 2) * 135px), -5px) scale(1.15);
         }
 
         .nav-dock-link.active {
@@ -939,18 +920,89 @@
             box-shadow: 0 4px 20px rgba(245, 162, 93, 0.15);
         }
 
+        /* Scattered Coordinates - Left Side Links */
+        [data-sec="hero"] {
+            left: 48px;
+            top: 28%;
+            transform: translate(0, -50%) scale(1.1);
+            transition-delay: 0.2s;
+        }
+        [data-sec="experience"] {
+            left: 48px;
+            top: 50%;
+            transform: translate(0, -50%) scale(1.1);
+            transition-delay: 0.1s;
+        }
+        [data-sec="contact"] {
+            left: 48px;
+            top: 72%;
+            transform: translate(0, -50%) scale(1.1);
+            transition-delay: 0.0s;
+        }
+
+        [data-sec="hero"]:hover,
+        [data-sec="experience"]:hover,
+        [data-sec="contact"]:hover {
+            color: var(--text);
+            border-color: var(--amber);
+            box-shadow: 0 10px 35px rgba(245, 162, 93, 0.25);
+            transform: translate(6px, -50%) scale(1.15);
+        }
+
+        /* Scattered Coordinates - Right Side Links */
+        [data-sec="work"] {
+            left: calc(100vw - 128px);
+            top: 36%;
+            transform: translate(0, -50%) scale(1.1);
+            transition-delay: 0.15s;
+        }
+        [data-sec="notes"] {
+            left: calc(100vw - 172px);
+            top: 64%;
+            transform: translate(0, -50%) scale(1.1);
+            transition-delay: 0.05s;
+        }
+
+        [data-sec="work"]:hover,
+        [data-sec="notes"]:hover {
+            color: var(--text);
+            border-color: var(--amber);
+            box-shadow: 0 10px 35px rgba(245, 162, 93, 0.25);
+            transform: translate(-6px, -50%) scale(1.15);
+        }
+
         /* Scrolled (Docked) State for vertical section links */
         .scrolled .nav-dock-link {
             position: fixed;
             top: 22px;
-            left: calc(50% - 390px + var(--i) * 75px);
             transform: translate(-50%, -50%) scale(0.9);
             background: transparent;
             border: 1px solid transparent;
             padding: 6px 10px;
             box-shadow: none;
             color: var(--text-dim);
-            transition-delay: calc(var(--i) * 0.05s); /* Wave effect in flight */
+        }
+
+        /* Docked coordinates inside header pill */
+        .scrolled [data-sec="hero"] {
+            left: calc(50% - 225px);
+            transition-delay: 0.0s;
+        }
+        .scrolled [data-sec="work"] {
+            left: calc(50% - 165px);
+            transition-delay: 0.05s;
+        }
+        .scrolled [data-sec="experience"] {
+            left: calc(50% - 95px);
+            transition-delay: 0.1s;
+        }
+        .scrolled [data-sec="notes"] {
+            left: calc(50% + 55px);
+            transition-delay: 0.15s;
+        }
+        .scrolled [data-sec="contact"] {
+            left: calc(50% + 130px);
+            transition-delay: 0.2s;
         }
 
         .scrolled .nav-dock-link:hover {
@@ -969,70 +1021,6 @@
             text-shadow: 0 0 8px rgba(245, 162, 93, 0.4);
         }
 
-        /* Right Side Email Dockable Info */
-        .nav-links-right {
-            position: absolute;
-        }
-
-        /* Default Right Side Link (Vertical email badge on load) */
-        .nav-dock-email {
-            position: fixed;
-            left: calc(100vw - 32px);
-            top: 50%;
-            transform: translate(-50%, -50%) rotate(90deg) scale(1.1);
-            background: rgba(20, 24, 29, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            padding: 12px 22px;
-            border-radius: 999px;
-            color: var(--text-muted);
-            font-family: var(--font-mono);
-            font-size: 11px;
-            letter-spacing: 0.12em;
-            text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        background 0.4s ease,
-                        border-color 0.4s ease,
-                        color 0.4s ease,
-                        padding 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        box-shadow 0.6s ease;
-            z-index: 101;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-
-        .nav-dock-email:hover {
-            color: var(--text);
-            border-color: var(--amber);
-            transform: translate(-50%, -50%) rotate(90deg) scale(1.15) translateY(-4px);
-            box-shadow: 0 10px 35px rgba(245, 162, 93, 0.2);
-        }
-
-        /* Scrolled (Docked) State for the email link */
-        .scrolled .nav-dock-email {
-            position: fixed;
-            top: 22px;
-            left: calc(50% + 50px);
-            transform: translate(0, -50%) rotate(0deg) scale(0.9);
-            background: transparent;
-            border: 1px solid transparent;
-            padding: 6px 10px;
-            box-shadow: none;
-            color: var(--text-dim);
-        }
-
-        .scrolled .nav-dock-email:hover {
-            color: var(--text);
-            transform: translate(0, -50%) rotate(0deg) scale(0.98);
-            background: transparent;
-            border-color: transparent;
-            box-shadow: none;
-        }
-
         /* Center and Divider Animations */
         .logo-badge {
             position: absolute;
@@ -1040,10 +1028,6 @@
             top: 50%;
             transform: translate(-50%, -50%);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .scrolled .logo-badge {
-            left: calc(50% + 5px);
         }
 
         .vertical-divider {
@@ -1072,12 +1056,12 @@
 
         /* Overrides to make the collapsed/scrolled header work */
         .scrolled .nav-pill {
-            width: 840px; /* Expands to hold logo, links, email, and button */
+            width: 680px; /* Sized to accommodate left links, logo, and chat btn */
         }
 
         @media (max-width: 1279px) {
             /* Hide the large floating menu cards on tablet/mobile screens */
-            .nav-dock-link, .nav-dock-email {
+            .nav-dock-link {
                 display: none !important;
             }
             .scrolled .nav-pill {
