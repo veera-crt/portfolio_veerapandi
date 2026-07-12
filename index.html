@@ -369,6 +369,14 @@
             margin-bottom: 6px;
         }
 
+        #work .section-eyebrow,
+        #experience .section-eyebrow {
+            text-decoration: underline;
+            text-decoration-color: #FFFFFF;
+            text-underline-offset: 8px;
+            text-decoration-thickness: 3px;
+        }
+
         .section-title {
             font-family: var(--font-mono);
             font-size: 12.5px;
@@ -376,6 +384,40 @@
             margin-bottom: 44px;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+
+        /* ── Work & Experience Section Dotted Border Frame ── */
+        .work-frame,
+        .experience-frame {
+            position: relative;
+            border-left: 1px dashed var(--border);
+            border-right: 1px dashed var(--border);
+            padding: 0 28px;
+            margin: 0 -28px;
+        }
+
+        .work-frame::before,
+        .work-frame::after,
+        .experience-frame::before,
+        .experience-frame::after {
+            content: '';
+            display: block;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 0;
+            border-top: 1px dashed var(--border);
+        }
+
+        .work-frame::before,
+        .experience-frame::before {
+            margin-bottom: 40px;
+        }
+
+        .work-frame::after,
+        .experience-frame::after {
+            margin-top: 40px;
         }
 
         /* Flagship Card Styles */
@@ -1523,6 +1565,12 @@
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 4px;
+            }
+
+            .work-frame,
+            .experience-frame {
+                padding: 0 20px;
+                margin: 0 -20px;
             }
         }
 
