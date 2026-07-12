@@ -1339,6 +1339,10 @@
         }
 
         /* Dynamic Menu Docking Styles */
+        .nav-links-wrapper {
+            display: contents;
+        }
+
         /* Default (Landing Page Scattered Style) when unscrolled */
         .nav-dock-link {
             position: fixed;
@@ -1531,10 +1535,62 @@
         }
 
         @media (max-width: 1279px) {
+            header.site {
+                top: 0.5rem;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+                padding: 0;
+                pointer-events: none;
+                width: 100vw;
+                left: 0;
+                right: 0;
+            }
 
-            /* Hide the large floating menu cards on tablet/mobile screens */
+            .nav-pill {
+                pointer-events: auto;
+            }
+
+            .nav-links-wrapper {
+                display: flex;
+                gap: 6px;
+                max-width: 100vw;
+                overflow-x: auto;
+                padding: 4px 16px;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+                pointer-events: auto;
+            }
+
+            .nav-links-wrapper::-webkit-scrollbar {
+                display: none;
+            }
+
             .nav-dock-link {
-                display: none !important;
+                display: inline-flex !important;
+                position: static !important;
+                transform: none !important;
+                height: 38px;
+                padding: 0 14px;
+                font-size: 11px;
+                background: rgba(20, 24, 29, 0.7);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid var(--border);
+                border-radius: 9999px;
+                color: var(--text-dim);
+                flex-shrink: 0;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease;
+                letter-spacing: 0.05em;
+            }
+
+            .nav-dock-link.active {
+                color: var(--amber) !important;
+                border-color: var(--amber) !important;
+                background: rgba(245, 162, 93, 0.08) !important;
+                box-shadow: 0 2px 10px rgba(245, 162, 93, 0.15) !important;
             }
 
             .scrolled .nav-pill {
@@ -1546,15 +1602,7 @@
             }
         }
 
-        @media (max-width: 879px) {
-            .scrolled .nav-pill {
-                width: 190px !important;
-            }
 
-            .scrolled .vertical-divider {
-                display: none !important;
-            }
-        }
 
         /* Media Queries responsiveness */
         @media(max-width:840px) {
@@ -1571,6 +1619,55 @@
 
             .hero {
                 padding: 140px 0 48px;
+            }
+
+            .avatar {
+                display: block;
+                margin: 0 auto 1.5rem;
+                width: 5.5rem;
+                height: 5.5rem;
+            }
+
+            .hero-heading {
+                text-align: center;
+            }
+
+            .subtext-container {
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .actions-row {
+                justify-content: center;
+            }
+
+            .filter-nav {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 8px;
+                margin: 20px 0;
+                scrollbar-width: none;
+                -webkit-overflow-scrolling: touch;
+                width: calc(100% + 40px);
+                margin-left: -20px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .filter-nav::-webkit-scrollbar {
+                display: none;
+            }
+
+            .filter-btn {
+                flex-shrink: 0;
+                height: 44px;
+                padding: 0 20px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
             }
 
             .notes-grid {
