@@ -1377,26 +1377,34 @@
         /* Scattered Coordinates - Left Side Links */
         [data-sec="hero"] {
             left: 48px;
-            top: 28%;
+            top: 22%;
+            transform: translate(0, -50%) scale(1.1);
+            transition-delay: 0.25s;
+        }
+
+        [data-sec="about"] {
+            left: 48px;
+            top: 40%;
             transform: translate(0, -50%) scale(1.1);
             transition-delay: 0.2s;
         }
 
         [data-sec="experience"] {
             left: 48px;
-            top: 50%;
+            top: 58%;
             transform: translate(0, -50%) scale(1.1);
-            transition-delay: 0.1s;
+            transition-delay: 0.15s;
         }
 
         [data-sec="contact"] {
             left: 48px;
-            top: 72%;
+            top: 76%;
             transform: translate(0, -50%) scale(1.1);
-            transition-delay: 0.0s;
+            transition-delay: 0.1s;
         }
 
         [data-sec="hero"]:hover,
+        [data-sec="about"]:hover,
         [data-sec="experience"]:hover,
         [data-sec="contact"]:hover {
             color: var(--text);
@@ -1408,19 +1416,27 @@
         /* Scattered Coordinates - Right Side Links */
         [data-sec="work"] {
             left: calc(100vw - 128px);
-            top: 36%;
+            top: 28%;
+            transform: translate(0, -50%) scale(1.1);
+            transition-delay: 0.2s;
+        }
+
+        [data-sec="tools"] {
+            left: calc(100vw - 128px);
+            top: 50%;
             transform: translate(0, -50%) scale(1.1);
             transition-delay: 0.15s;
         }
 
         [data-sec="notes"] {
-            left: calc(100vw - 172px);
-            top: 64%;
+            left: calc(100vw - 182px);
+            top: 72%;
             transform: translate(0, -50%) scale(1.1);
-            transition-delay: 0.05s;
+            transition-delay: 0.1s;
         }
 
         [data-sec="work"]:hover,
+        [data-sec="tools"]:hover,
         [data-sec="notes"]:hover {
             color: var(--text);
             border-color: var(--amber);
@@ -1510,7 +1526,7 @@
 
         /* Overrides to make the collapsed/scrolled header work */
         .scrolled .nav-pill {
-            width: 820px;
+            width: 900px;
             /* HOME+WORK+EXPERIENCE+VALIDATIONS+CONTACT + gaps + VG + divider + Let's talk */
         }
 
@@ -1808,7 +1824,7 @@
             // --- Dynamic Link Positioning: measure real docked widths, equal gaps ---
             // Widths are measured AFTER .scrolled is applied so padding is correct.
             const _dockLinks = Array.from(document.querySelectorAll('.nav-dock-link'));
-            const PILL_W = 820;  // must match .scrolled .nav-pill width
+            const PILL_W = 900;  // must match .scrolled .nav-pill width
             const R_ZONE = 185;  // VG badge (~36px) + divider (~16px) + Let's talk (~130px) + gaps
             const L_PAD = 24;   // breathing room from pill left edge
 
