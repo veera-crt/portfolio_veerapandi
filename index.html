@@ -370,7 +370,8 @@
         }
 
         #work .section-eyebrow,
-        #experience .section-eyebrow {
+        #experience .section-eyebrow,
+        #notes .section-eyebrow {
             text-decoration: underline;
             text-decoration-color: #FFFFFF;
             text-underline-offset: 8px;
@@ -386,9 +387,10 @@
             letter-spacing: 0.05em;
         }
 
-        /* ── Work & Experience Section Dotted Border Frame ── */
+        /* ── Work, Experience & Validations Section Dotted Border Frame ── */
         .work-frame,
-        .experience-frame {
+        .experience-frame,
+        .notes-frame {
             position: relative;
             border-left: 1px dashed var(--border);
             border-right: 1px dashed var(--border);
@@ -399,7 +401,9 @@
         .work-frame::before,
         .work-frame::after,
         .experience-frame::before,
-        .experience-frame::after {
+        .experience-frame::after,
+        .notes-frame::before,
+        .notes-frame::after {
             content: '';
             display: block;
             position: relative;
@@ -411,12 +415,14 @@
         }
 
         .work-frame::before,
-        .experience-frame::before {
+        .experience-frame::before,
+        .notes-frame::before {
             margin-bottom: 40px;
         }
 
         .work-frame::after,
-        .experience-frame::after {
+        .experience-frame::after,
+        .notes-frame::after {
             margin-top: 40px;
         }
 
@@ -1568,7 +1574,8 @@
             }
 
             .work-frame,
-            .experience-frame {
+            .experience-frame,
+            .notes-frame {
                 padding: 0 20px;
                 margin: 0 -20px;
             }
