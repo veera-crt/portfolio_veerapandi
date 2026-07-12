@@ -1,169 +1,321 @@
-    <section class="section" id="work">
-        <div class="wrap">
-            <div class="section-eyebrow">Featured work</div>
-            <h2 class="section-title">Core architecture deployments.</h2>
+<section class="section" id="work">
+    <div class="wrap">
+        <div class="section-eyebrow">Featured work</div>
+        <h2 class="section-title">Core architecture deployments.</h2>
 
-            <!-- Flagship Block: TruthLens AI -->
-            <div class="flagship-card">
-                <div class="flagship-tags">
-                    <span class="tag-purple">AI SECURITY • MISINFORMATION</span>
-                    <span class="tag-gold-outline">Flagship – Unisys Innovation Program 2026</span>
+        <!-- Flagship Block: TruthLens AI -->
+        <div class="flagship-card">
+            <div class="flagship-tags">
+                <span class="tag-purple">AI SECURITY • MISINFORMATION</span>
+                <span class="tag-gold-outline">Flagship – Unisys Innovation Program 2026</span>
+            </div>
+            <h3 class="flagship-title">TruthLens AI — Predictive Misinformation Intelligence Platform</h3>
+            <div class="flagship-tech-strip">
+                <div class="flagship-tech-track">
+                    <span class="ftech-tag ftech-python">Python</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-flask">Flask</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-pytorch">PyTorch</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-hf">HuggingFace</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-deberta">mDeBERTa-v3</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-goemotions">GoEmotions</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-whisper">Whisper AI</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-gemini">Gemini API</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-search">Tavily / Exa / Serper</span>
+                    <!-- Duplicate for seamless loop -->
+                    <span class="ftech-tag ftech-python">Python</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-flask">Flask</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-pytorch">PyTorch</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-hf">HuggingFace</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-deberta">mDeBERTa-v3</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-goemotions">GoEmotions</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-whisper">Whisper AI</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-gemini">Gemini API</span>
+                    <span class="ftech-dot">•</span>
+                    <span class="ftech-tag ftech-search">Tavily / Exa / Serper</span>
                 </div>
-                <h3 class="flagship-title">TruthLens AI — Predictive Misinformation Intelligence Platform</h3>
-                <div class="flagship-tech">
-                    Python • Flask • PyTorch • HuggingFace • mDeBERTa-v3 • GoEmotions • Whisper AI • Gemini API • Tavily/Exa/Serper
+            </div>
+            <p class="flagship-desc">
+                Architected and led a 4-phase autonomous forensic pipeline — transcription, cross-platform social
+                intelligence, forensic NLP analysis, and autonomous fact verification — to detect misinformation before
+                it reaches mass virality.
+            </p>
+            <ul class="flagship-points">
+                <li class="flagship-point">
+                    <span class="flagship-point-arrow">▶</span>
+                    <span>Designed a Trust Index Fusion Engine: Evidence Risk (75%) + NLP Manipulation (25%), fused with
+                        a social propagation multiplier into an actionable Trust Score.</span>
+                </li>
+                <li class="flagship-point">
+                    <span class="flagship-point-arrow">▶</span>
+                    <span>Implemented mDeBERTa-v3 propaganda detection and GoEmotions-based fear/urgency scoring for
+                        emotional manipulation analysis.</span>
+                </li>
+                <li class="flagship-point">
+                    <span class="flagship-point-arrow">▶</span>
+                    <span>Integrated multi-API fact verification with semantic embeddings and NLI
+                        entailment/contradiction classification.</span>
+                </li>
+                <li class="flagship-point">
+                    <span class="flagship-point-arrow">▶</span>
+                    <span>Built a 3-tier LLM cascade (Gemini 2.5 Flash → Groq → local Ollama) for 100% uptime with
+                        auto-failover under rate limits.</span>
+                </li>
+            </ul>
+            <a href="https://github.com/veera-crt/" class="flagship-btn" target="_blank" rel="noopener">
+                View on GitHub →
+            </a>
+        </div>
+
+        <!-- Filter Navigation Bar -->
+        <div class="filter-nav">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="forensics">Forensics</button>
+            <button class="filter-btn" data-filter="cryptography">Cryptography</button>
+            <button class="filter-btn" data-filter="app-security">App security</button>
+            <button class="filter-btn" data-filter="network">Network</button>
+            <button class="filter-btn" data-filter="ai-automation">AI / automation</button>
+        </div>
+
+        <!-- 2-Column Standard Card Grid -->
+        <div class="proj-grid">
+            <!-- Card 1: Email Forensics Analyzer -->
+            <div class="proj-card" data-category="forensics">
+                <div class="proj-header hdr-forensics">
+                    <span>FORENSICS</span>
+                    <div class="proj-tech-mini">
+                        <div class="proj-tech-mini-track">
+                            <span class="ptag ptag-python">Python</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-flask">Flask</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-react">React</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-vt">VirusTotal API</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-python">SMTP Parser</span>
+                            <span class="ptag-dot">•</span>
+                            <span class="ptag ptag-python">Python</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-flask">Flask</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-react">React</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-vt">VirusTotal API</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-python">SMTP Parser</span>
+                        </div>
+                    </div>
                 </div>
-                <p class="flagship-desc">
-                    Architected and led a 4-phase autonomous forensic pipeline — transcription, cross-platform social intelligence, forensic NLP analysis, and autonomous fact verification — to detect misinformation before it reaches mass virality.
-                </p>
-                <ul class="flagship-points">
-                    <li class="flagship-point">
-                        <span class="flagship-point-arrow">▶</span>
-                        <span>Designed a Trust Index Fusion Engine: Evidence Risk (75%) + NLP Manipulation (25%), fused with a social propagation multiplier into an actionable Trust Score.</span>
-                    </li>
-                    <li class="flagship-point">
-                        <span class="flagship-point-arrow">▶</span>
-                        <span>Implemented mDeBERTa-v3 propaganda detection and GoEmotions-based fear/urgency scoring for emotional manipulation analysis.</span>
-                    </li>
-                    <li class="flagship-point">
-                        <span class="flagship-point-arrow">▶</span>
-                        <span>Integrated multi-API fact verification with semantic embeddings and NLI entailment/contradiction classification.</span>
-                    </li>
-                    <li class="flagship-point">
-                        <span class="flagship-point-arrow">▶</span>
-                        <span>Built a 3-tier LLM cascade (Gemini 2.5 Flash → Groq → local Ollama) for 100% uptime with auto-failover under rate limits.</span>
-                    </li>
-                </ul>
-                <a href="https://github.com/veera-crt/" class="flagship-btn" target="_blank" rel="noopener">
-                    View on GitHub →
-                </a>
+                <div class="proj-img-placeholder">
+                    <img src="/Projects_images/Email.png" alt="Project screenshot" class="proj-img">
+                </div>
+                <div class="proj-content">
+                    <h4 class="proj-title">Email Forensics Analyzer</h4>
+                    <p class="proj-desc">
+                        Web platform detecting phishing via email header, link, and attachment analysis. Integrated
+                        VirusTotal API for real-time URL/file scanning, with sender spoofing and routing anomaly
+                        detection.
+                    </p>
+                    <a href="https://email-phishing-detector-4qf2.vercel.app/" class="proj-link" target="_blank"
+                        rel="noopener">
+                        Live demo →
+                    </a>
+                </div>
             </div>
 
-            <!-- Filter Navigation Bar -->
-            <div class="filter-nav">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="forensics">Forensics</button>
-                <button class="filter-btn" data-filter="cryptography">Cryptography</button>
-                <button class="filter-btn" data-filter="app-security">App security</button>
-                <button class="filter-btn" data-filter="network">Network</button>
-                <button class="filter-btn" data-filter="ai-automation">AI / automation</button>
+            <!-- Card 2: CipherKeep -->
+            <div class="proj-card" data-category="cryptography">
+                <div class="proj-header hdr-cryptography">
+                    <span>CRYPTOGRAPHY</span>
+                    <div class="proj-tech-mini">
+                        <div class="proj-tech-mini-track">
+                            <span class="ptag ptag-aes">AES-256</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-node">Node.js</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-react">React</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-jwt">JWT</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-mongo">MongoDB</span>
+                            <span class="ptag-dot">•</span>
+                            <span class="ptag ptag-aes">AES-256</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-node">Node.js</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-react">React</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-jwt">JWT</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-mongo">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="proj-img-placeholder">
+                    <img src="/Projects_images/password-manager.png" alt="Project screenshot" class="proj-img">
+                </div>
+                <div class="proj-content">
+                    <h4 class="proj-title">CipherKeep — Secure Password Manager</h4>
+                    <p class="proj-desc">
+                        Production-grade password vault with AES-256 encryption and time-based session access control.
+                        Actively used and maintained for 6+ months.
+                    </p>
+                    <a href="https://chipherkeep.vercel.app/" class="proj-link" target="_blank" rel="noopener">
+                        Live demo →
+                    </a>
+                </div>
             </div>
 
-            <!-- 2-Column Standard Card Grid -->
-            <div class="proj-grid">
-                <!-- Card 1: Email Forensics Analyzer -->
-                <div class="proj-card" data-category="forensics">
-                    <div class="proj-header hdr-forensics">
-                        FORENSICS
-                    </div>
-                    <div class="proj-img-placeholder">
-                        <img src="#" alt="Project screenshot" class="proj-img">
-                    </div>
-                    <div class="proj-content">
-                        <h4 class="proj-title">Email Forensics Analyzer</h4>
-                        <p class="proj-desc">
-                            Web platform detecting phishing via email header, link, and attachment analysis. Integrated VirusTotal API for real-time URL/file scanning, with sender spoofing and routing anomaly detection.
-                        </p>
-                        <a href="https://email-phishing-detector-4qf2.vercel.app/" class="proj-link" target="_blank" rel="noopener">
-                            Live demo →
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Card 2: CipherKeep -->
-                <div class="proj-card" data-category="cryptography">
-                    <div class="proj-header hdr-cryptography">
-                        CRYPTOGRAPHY
-                    </div>
-                    <div class="proj-img-placeholder">
-                        <img src="#" alt="Project screenshot" class="proj-img">
-                    </div>
-                    <div class="proj-content">
-                        <h4 class="proj-title">CipherKeep — Secure Password Manager</h4>
-                        <p class="proj-desc">
-                            Production-grade password vault with AES-256 encryption and time-based session access control. Actively used and maintained for 6+ months.
-                        </p>
-                        <a href="https://chipherkeep.vercel.app/" class="proj-link" target="_blank" rel="noopener">
-                            Live demo →
-                        </a>
+            <!-- Card 3: Secure Voting Platform -->
+            <div class="proj-card proj-card--hidden" data-category="app-security">
+                <div class="proj-header hdr-app-sec">
+                    <span>APP SECURITY</span>
+                    <div class="proj-tech-mini">
+                        <div class="proj-tech-mini-track">
+                            <span class="ptag ptag-node">Node.js</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-react">React</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-aes">AES-256</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-pg">PostgreSQL</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-jwt">JWT Auth</span>
+                            <span class="ptag-dot">•</span>
+                            <span class="ptag ptag-node">Node.js</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-react">React</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-aes">AES-256</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-pg">PostgreSQL</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-jwt">JWT Auth</span>
+                        </div>
                     </div>
                 </div>
+                <div class="proj-img-placeholder">
+                    <img src="/Projects_images/vote.png" alt="Project screenshot" class="proj-img">
+                </div>
+                <div class="proj-content">
+                    <h4 class="proj-title">Secure Voting Platform</h4>
+                    <p class="proj-desc">
+                        Full-stack voting platform with robust auth/authorization, strict one-vote validation, and
+                        AES-256 encryption for identities and voting records.
+                    </p>
+                    <a href="https://secure-vote-nine.vercel.app/" class="proj-link" target="_blank" rel="noopener">
+                        Live demo →
+                    </a>
+                </div>
+            </div>
 
-                <!-- Card 3: Secure Voting Platform -->
-                <div class="proj-card" data-category="app-security">
-                    <div class="proj-header hdr-app-sec">
-                        APP SECURITY
-                    </div>
-                    <div class="proj-img-placeholder">
-                        <img src="#" alt="Project screenshot" class="proj-img">
-                    </div>
-                    <div class="proj-content">
-                        <h4 class="proj-title">Secure Voting Platform</h4>
-                        <p class="proj-desc">
-                            Full-stack voting platform with robust auth/authorization, strict one-vote validation, and AES-256 encryption for identities and voting records.
-                        </p>
-                        <a href="https://secure-vote-nine.vercel.app/" class="proj-link" target="_blank" rel="noopener">
-                            Live demo →
-                        </a>
+            <!-- Card 4: Intrusion Prevention System -->
+            <div class="proj-card proj-card--hidden" data-category="network">
+                <div class="proj-header hdr-network">
+                    <span>NETWORK SECURITY</span>
+                    <div class="proj-tech-mini">
+                        <div class="proj-tech-mini-track">
+                            <span class="ptag ptag-cisco">Cisco Packet Tracer</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cisco">IPS Signatures</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cisco">Dynamic Routing</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-vt">Threat Detection</span>
+                            <span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cisco">Cisco Packet Tracer</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cisco">IPS Signatures</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cisco">Dynamic Routing</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-vt">Threat Detection</span>
+                        </div>
                     </div>
                 </div>
+                <div class="proj-img-placeholder">
+                    <img src="/Projects_images/network-meme.jpg" alt="Project screenshot" class="proj-img">
+                </div>
+                <div class="proj-content">
+                    <h4 class="proj-title">Intrusion Prevention System — Case Study</h4>
+                    <p class="proj-desc">
+                        Designed a multi-router IPS in Cisco Packet Tracer with dynamic routing and tuned IPS signatures
+                        for effective threat detection.
+                    </p>
+                    <a href="https://github.com/veera-crt/" class="proj-link" target="_blank" rel="noopener">
+                        View details →
+                    </a>
+                </div>
+            </div>
 
-                <!-- Card 4: Intrusion Prevention System -->
-                <div class="proj-card" data-category="network">
-                    <div class="proj-header hdr-network">
-                        NETWORK SECURITY
-                    </div>
-                    <div class="proj-img-placeholder">
-                        <img src="#" alt="Project screenshot" class="proj-img">
-                    </div>
-                    <div class="proj-content">
-                        <h4 class="proj-title">Intrusion Prevention System — Case Study</h4>
-                        <p class="proj-desc">
-                            Designed a multi-router IPS in Cisco Packet Tracer with dynamic routing and tuned IPS signatures for effective threat detection.
-                        </p>
-                        <a href="https://github.com/veera-crt/" class="proj-link" target="_blank" rel="noopener">
-                            View details →
-                        </a>
+            <!-- Card 5: JARVIS AI Voice Assistant -->
+            <div class="proj-card proj-card--hidden" data-category="ai-automation">
+                <div class="proj-header hdr-ai-auto">
+                    <span>AI AUTOMATION</span>
+                    <div class="proj-tech-mini">
+                        <div class="proj-tech-mini-track">
+                            <span class="ptag ptag-gemini">Gemini API</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-live">LiveKit</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-python">Python</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cv">Speech Recognition</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-node">FastAPI</span>
+                            <span class="ptag-dot">•</span>
+                            <span class="ptag ptag-gemini">Gemini API</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-live">LiveKit</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-python">Python</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cv">Speech Recognition</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-node">FastAPI</span>
+                        </div>
                     </div>
                 </div>
+                <div class="proj-img-placeholder">
+                    <img src="/Projects_images/jarvis.jpeg" alt="Project screenshot" class="proj-img">
+                </div>
+                <div class="proj-content">
+                    <h4 class="proj-title">JARVIS AI Voice Assistant</h4>
+                    <p class="proj-desc">
+                        Voice-controlled assistant using Gemini API and LiveKit, with real-time speech recognition and
+                        secure, permission-gated system automation.
+                    </p>
+                    <a href="https://github.com/veera-crt/" class="proj-link" target="_blank" rel="noopener">
+                        View on GitHub →
+                    </a>
+                </div>
+            </div>
 
-                <!-- Card 5: JARVIS AI Voice Assistant -->
-                <div class="proj-card" data-category="ai-automation">
-                    <div class="proj-header hdr-ai-auto">
-                        AI AUTOMATION
-                    </div>
-                    <div class="proj-img-placeholder">
-                        <img src="#" alt="Project screenshot" class="proj-img">
-                    </div>
-                    <div class="proj-content">
-                        <h4 class="proj-title">JARVIS AI Voice Assistant</h4>
-                        <p class="proj-desc">
-                            Voice-controlled assistant using Gemini API and LiveKit, with real-time speech recognition and secure, permission-gated system automation.
-                        </p>
-                        <a href="https://github.com/veera-crt/" class="proj-link" target="_blank" rel="noopener">
-                            View on GitHub →
-                        </a>
+            <!-- Card 6: Face Recognition Attendance System -->
+            <div class="proj-card proj-card--hidden" data-category="ai-automation">
+                <div class="proj-header hdr-comp-vision">
+                    <span>COMPUTER VISION</span>
+                    <div class="proj-tech-mini">
+                        <div class="proj-tech-mini-track">
+                            <span class="ptag ptag-python">Python</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cv">OpenCV</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cv">face_recognition</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-pdf">ReportLab PDF</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-live">Webcam Live</span>
+                            <span class="ptag-dot">•</span>
+                            <span class="ptag ptag-python">Python</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cv">OpenCV</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-cv">face_recognition</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-pdf">ReportLab PDF</span><span class="ptag-dot">•</span>
+                            <span class="ptag ptag-live">Webcam Live</span>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Card 6: Face Recognition Attendance System -->
-                <div class="proj-card" data-category="ai-automation">
-                    <div class="proj-header hdr-comp-vision">
-                        COMPUTER VISION
-                    </div>
-                    <div class="proj-img-placeholder">
-                        <img src="#" alt="Project screenshot" class="proj-img">
-                    </div>
-                    <div class="proj-content">
-                        <h4 class="proj-title">Face Recognition Attendance System</h4>
-                        <p class="proj-desc">
-                            Python + OpenCV attendance system with a custom-trained recognition model, live webcam detection, and one-click PDF attendance reporting.
-                        </p>
-                        <a href="https://youtu.be/1RpE_ap6kME" class="proj-link" target="_blank" rel="noopener">
-                            Watch demo →
-                        </a>
-                    </div>
+                <div class="proj-img-placeholder">
+                    <img src="/Projects_images/Face.png" alt="Project screenshot" class="proj-img">
+                </div>
+                <div class="proj-content">
+                    <h4 class="proj-title">Face Recognition Attendance System</h4>
+                    <p class="proj-desc">
+                        Python + OpenCV attendance system with a custom-trained recognition model, live webcam
+                        detection, and one-click PDF attendance reporting.
+                    </p>
+                    <a href="https://youtu.be/1RpE_ap6kME" class="proj-link" target="_blank" rel="noopener">
+                        Watch demo →
+                    </a>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- View More Button -->
+        <div class="proj-more-wrap" id="proj-more-wrap">
+            <div class="proj-more-line"></div>
+            <button class="proj-more-btn" id="proj-more-btn" aria-expanded="false">
+                <span class="proj-more-label">View all projects</span>
+                <span class="proj-more-count">+4 more</span>
+                <svg class="proj-more-arrow" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 3v10M3 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </button>
+            <div class="proj-more-line"></div>
+        </div>
+    </div>
+</section>
