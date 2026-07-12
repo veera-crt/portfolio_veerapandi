@@ -1313,15 +1313,6 @@
                 });
             });
 
-            // --- Side Menu Copy Trigger ---
-            const sideEmailBtn = document.getElementById('sideEmailBtn');
-            if (sideEmailBtn) {
-                sideEmailBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    copyEmailToClipboard();
-                });
-            }
-
             // --- Header Scroll State Manager & Recalculator ---
             const bodyNode = document.body;
             function handleScrollState() {
