@@ -100,7 +100,7 @@
             padding: 8px 16px;
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
-            width: 156px;
+            width: 190px;
             height: 48px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
@@ -580,22 +580,27 @@
             background: #17332A;
             color: #5FD49D;
         }
+
         .hdr-cryptography {
             background: #3D2E1C;
             color: #F5A25D;
         }
+
         .hdr-app-sec {
             background: #1F2E3D;
             color: #7EB8F5;
         }
+
         .hdr-network {
             background: #3D1F1F;
             color: #F57E7E;
         }
+
         .hdr-ai-auto {
             background: #1A3324;
             color: #5FD480;
         }
+
         .hdr-comp-vision {
             background: #2A1F3D;
             color: #B97EF5;
@@ -719,6 +724,7 @@
             from {
                 transform: translateX(0);
             }
+
             to {
                 transform: translateX(-50%);
             }
@@ -901,14 +907,14 @@
             letter-spacing: 0.15em;
             text-decoration: none;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(245, 162, 93, 0.05);
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        top 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        left 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        background 0.4s ease,
-                        border-color 0.4s ease,
-                        color 0.4s ease,
-                        padding 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                        box-shadow 0.6s ease;
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.4, 1),
+                top 0.3s cubic-bezier(0.25, 1, 0.4, 1),
+                left 0.3s cubic-bezier(0.25, 1, 0.4, 1),
+                background 0.25s ease,
+                border-color 0.25s ease,
+                color 0.25s ease,
+                padding 0.3s cubic-bezier(0.25, 1, 0.4, 1),
+                box-shadow 0.3s ease;
             z-index: 101;
             white-space: nowrap;
         }
@@ -927,12 +933,14 @@
             transform: translate(0, -50%) scale(1.1);
             transition-delay: 0.2s;
         }
+
         [data-sec="experience"] {
             left: 48px;
             top: 50%;
             transform: translate(0, -50%) scale(1.1);
             transition-delay: 0.1s;
         }
+
         [data-sec="contact"] {
             left: 48px;
             top: 72%;
@@ -956,6 +964,7 @@
             transform: translate(0, -50%) scale(1.1);
             transition-delay: 0.15s;
         }
+
         [data-sec="notes"] {
             left: calc(100vw - 172px);
             top: 64%;
@@ -974,7 +983,7 @@
         /* Scrolled (Docked) State for vertical section links */
         .scrolled .nav-dock-link {
             position: fixed;
-            top: 22px;
+            top: 56px;
             transform: translate(-50%, -50%) scale(0.9);
             background: transparent;
             border: 1px solid transparent;
@@ -983,27 +992,13 @@
             color: var(--text-dim);
         }
 
-        /* Docked coordinates inside header pill */
-        .scrolled [data-sec="hero"] {
-            left: calc(50% - 225px);
-            transition-delay: 0.0s;
-        }
-        .scrolled [data-sec="work"] {
-            left: calc(50% - 165px);
-            transition-delay: 0.05s;
-        }
-        .scrolled [data-sec="experience"] {
-            left: calc(50% - 95px);
-            transition-delay: 0.1s;
-        }
-        .scrolled [data-sec="notes"] {
-            left: calc(50% + 55px);
-            transition-delay: 0.15s;
-        }
-        .scrolled [data-sec="contact"] {
-            left: calc(50% + 130px);
-            transition-delay: 0.2s;
-        }
+        /* Docked coordinates: links spread evenly across pill left area */
+        /* All stagger delays = 0 so links arrive together instantly */
+        .scrolled [data-sec="hero"] { transition-delay: 0s; }
+        .scrolled [data-sec="work"] { transition-delay: 0s; }
+        .scrolled [data-sec="experience"] { transition-delay: 0s; }
+        .scrolled [data-sec="notes"] { transition-delay: 0s; }
+        .scrolled [data-sec="contact"] { transition-delay: 0s; }
 
         .scrolled .nav-dock-link:hover {
             color: var(--text);
@@ -1024,31 +1019,38 @@
         /* Center and Divider Animations */
         .logo-badge {
             position: absolute;
-            left: 50%;
+            left: 20px;
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateY(-50%);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scrolled .logo-badge {
+            left: auto;
+            right: 172px;
+            transform: translateY(-50%);
         }
 
         .vertical-divider {
             height: 16px;
             width: 1px;
-            background: var(--border);
+            background: #ffffff;
             position: absolute;
-            right: 120px;
+            right: 128px;
             top: 50%;
             transform: translateY(-50%);
-            opacity: 0;
-            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            margin: 0;
+            opacity: 1;
+            transition: right 0.8s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease;
         }
 
         .scrolled .vertical-divider {
-            opacity: 1;
+            right: 148px;
         }
 
         .chat-btn {
             position: absolute;
-            right: 10px;
+            right: 0.5px;
             top: 50%;
             transform: translateY(-50%);
             transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1056,17 +1058,21 @@
 
         /* Overrides to make the collapsed/scrolled header work */
         .scrolled .nav-pill {
-            width: 680px; /* Sized to accommodate left links, logo, and chat btn */
+            width: 820px;
+            /* HOME+WORK+EXPERIENCE+VALIDATIONS+CONTACT + gaps + VG + divider + Let's talk */
         }
 
         @media (max-width: 1279px) {
+
             /* Hide the large floating menu cards on tablet/mobile screens */
             .nav-dock-link {
                 display: none !important;
             }
+
             .scrolled .nav-pill {
-                width: 156px !important;
+                width: 190px !important;
             }
+
             .scrolled .vertical-divider {
                 display: none !important;
             }
@@ -1074,8 +1080,9 @@
 
         @media (max-width: 879px) {
             .scrolled .nav-pill {
-                width: 156px !important;
+                width: 190px !important;
             }
+
             .scrolled .vertical-divider {
                 display: none !important;
             }
@@ -1244,7 +1251,7 @@
             document.addEventListener('keydown', (e) => {
                 const tag = (e.target.tagName || '').toLowerCase();
                 if (tag === 'input' || tag === 'textarea') return;
-                
+
                 // Trigger copy only if 'c' is pressed without Ctrl, Cmd (metaKey), Alt, or Shift
                 if ((e.key === 'c' || e.key === 'C') && !e.ctrlKey && !e.metaKey && !e.altKey && !e.shiftKey) {
                     e.preventDefault();
@@ -1283,10 +1290,10 @@
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
-                    
+
                     const width = rect.width;
                     const height = rect.height;
-                    
+
                     const rotateX = ((y / height) - 0.5) * -12;
                     const rotateY = ((x / width) - 0.5) * 12;
 
@@ -1295,12 +1302,12 @@
                     const shadowY = ((y / height) - 0.5) * -15;
 
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                    
+
                     const isFlagship = card.classList.contains('flagship-card');
                     const shadowAlpha = isFlagship ? 0.22 : 0.16;
                     const shadowBlur = isFlagship ? 30 : 22;
                     card.style.boxShadow = `${shadowX}px ${shadowY}px ${shadowBlur}px rgba(212, 175, 55, ${shadowAlpha})`;
-                    
+
                     card.style.transition = 'none';
                 });
 
@@ -1313,54 +1320,80 @@
                 });
             });
 
-            // --- Header Scroll State Manager & Recalculator ---
+            // --- Dynamic Link Positioning: measure real docked widths, equal gaps ---
+            // Widths are measured AFTER .scrolled is applied so padding is correct.
+            const _dockLinks = Array.from(document.querySelectorAll('.nav-dock-link'));
+            const PILL_W   = 820;  // must match .scrolled .nav-pill width
+            const R_ZONE   = 185;  // VG badge (~36px) + divider (~16px) + Let's talk (~130px) + gaps
+            const L_PAD    = 24;   // breathing room from pill left edge
+
+            function applyDockedPositions() {
+                // At this point, .scrolled is on body → links have docked padding (6px 10px)
+                const widths    = _dockLinks.map(l => l.offsetWidth);
+                const totalText = widths.reduce((s, w) => s + w, 0);
+                const gap       = Math.max(8, (PILL_W - R_ZONE - L_PAD - totalText) / (_dockLinks.length + 1));
+                const pillLeftX = window.innerWidth / 2 - PILL_W / 2;
+                let x = pillLeftX + L_PAD + gap;
+                _dockLinks.forEach((link, i) => {
+                    link.style.left = (x + widths[i] / 2) + 'px';
+                    x += widths[i] + gap;
+                });
+            }
+
+            // --- Header Scroll State Manager ---
             const bodyNode = document.body;
             function handleScrollState() {
                 if (window.scrollY > 20) {
                     bodyNode.classList.add('scrolled');
+                    applyDockedPositions(); // instant — no frame wait
                 } else {
                     bodyNode.classList.remove('scrolled');
+                    _dockLinks.forEach(l => { l.style.left = ''; });
                 }
-                // Recalculate progress border immediately when layout expands/collapses
-                if (typeof updateProgressBorder === 'function') {
-                    updateProgressBorder();
-                }
+                if (typeof updateProgressBorder === 'function') updateProgressBorder();
             }
             window.addEventListener('scroll', handleScrollState, { passive: true });
+            window.addEventListener('resize', () => {
+                if (document.body.classList.contains('scrolled')) applyDockedPositions();
+            });
+
             handleScrollState();
 
-            // --- Scroll-Spy active highlights for dockable links ---
+            // --- Scroll-Spy: IntersectionObserver highlights the most-visible section ---
             const dockLinks = document.querySelectorAll('.nav-dock-link');
-            const spySections = [
-                document.getElementById('hero'),
-                document.getElementById('work'),
-                document.getElementById('experience'),
-                document.getElementById('notes'),
-                document.getElementById('contact')
-            ];
+            const spySectionIds = ['hero', 'work', 'experience', 'notes', 'contact'];
 
-            function highlightDockMenu() {
-                let scrollPos = window.scrollY + window.innerHeight / 3;
-
-                spySections.forEach(sec => {
-                    if (!sec) return;
-                    const top = sec.offsetTop;
-                    const height = sec.offsetHeight;
-                    const id = sec.getAttribute('id');
-
-                    if (scrollPos >= top && scrollPos < top + height) {
-                        dockLinks.forEach(link => {
-                            link.classList.remove('active');
-                            if (link.getAttribute('data-sec') === id) {
-                                link.classList.add('active');
-                            }
-                        });
+            // Track intersection ratios for all sections, highlight the most visible one
+            const visibilityMap = {};
+            function updateActiveLink() {
+                let maxRatio = 0;
+                let activeId = null;
+                spySectionIds.forEach(id => {
+                    if ((visibilityMap[id] || 0) > maxRatio) {
+                        maxRatio = visibilityMap[id];
+                        activeId = id;
                     }
                 });
+                if (activeId) {
+                    dockLinks.forEach(link => {
+                        link.classList.toggle('active', link.getAttribute('data-sec') === activeId);
+                    });
+                }
             }
 
-            window.addEventListener('scroll', highlightDockMenu, { passive: true });
-            highlightDockMenu();
+            const spyObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    visibilityMap[entry.target.id] = entry.intersectionRatio;
+                });
+                updateActiveLink();
+            }, {
+                threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+            });
+
+            spySectionIds.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) spyObserver.observe(el);
+            });
         }
 
         // Load all HTML templates asynchronously on DOM ready
