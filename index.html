@@ -947,7 +947,9 @@
 
         .proj-card--visible {
             display: flex;
-            animation: card-reveal 0.4s cubic-bezier(0.25, 1, 0.4, 1) forwards;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            animation: card-reveal 0.4s cubic-bezier(0.25, 1, 0.4, 1) backwards;
         }
 
         @keyframes card-reveal {
